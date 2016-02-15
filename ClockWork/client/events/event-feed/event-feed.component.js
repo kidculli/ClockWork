@@ -4,6 +4,9 @@
  * file: event-feed.component.js
  *
  * This file declares an angular directive for the event-feed view
+ *
+ * 2/15/16
+ *  -hardcoded data into controller
  */
 
 angular.module("ClockWork").directive('eventFeed',function(){

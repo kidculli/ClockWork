@@ -1,28 +1,55 @@
+<!--
+Author: Cullin Lam
+File: event-feed.html
+
+This file implements the view for the event feed
+
+2/15/16
+    -added grid system classes
+    -added icons
+-->
 <ion-view view-title="EventFeed">
     <ion-header-bar align-title="center" class="bar-positive">
         <h1 class="title">Events</h1>
+        <button class="button icon-right ion-compose"></button>
     </ion-header-bar>
 
     <ion-content scroll scrollbar-y>
-            <ion-list ng-repeat="event in events">
-                <ion-item>
-                    {{name}}
-                    <h2>{{event.title}}</h2>
+        <ion-list ng-repeat="event in events">
+            <ion-item>
+                <div class="row">
+                    <div class="col col-10">
+                        <i class="icon icon-left ion-social-dribbble-outline"></i>
+                    </div>
+                    <div class="col col-40">
 
-                    <h3>{{event.owner}}</h3>
-                    <h4>{{event.fill}}/{{event.cap}}</h4>
+                        <!--{{name}}-->
+                        <h2>{{event.title}}</h2>
 
-                    <p>{{event.description}}</p>
+                        <h3>{{event.owner}}</h3>
+                    </div>
+                    <div class="col col-30">
 
-                    <p>{{event.expire | date:"short"}}</p>
-                    <i class="icon ion-chevron-right icon-accessory"></i>
+
+                   <i class="icon ion-android-alarm-clock"></i>
+
+                        <h3>{{event.expire | date:"short"}}</h3>
+
+                    </div>
+                    <div class="col col-20">
+                        <i class="icon ion-person-stalker"></i>
+
+                        <h2>{{event.fill}}/{{event.cap}}</h2>
+                        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+                    </div>
 
                     <ion-option-button class="button-assertive" ng-click="remove(chat)">
                         Delete
                     </ion-option-button>
-                </ion-item>
-            </ion-list>
-            <!--</div>-->
+                </div>
+            </ion-item>
+        </ion-list>
+        <!--</div>-->
         <!--</ion-scroll>-->
     </ion-content>
 </ion-view>
