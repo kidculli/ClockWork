@@ -1,0 +1,28 @@
+<ion-view view-title="EventFeed">
+    <ion-header-bar align-title="center" class="bar-positive">
+        <h1 class="title">Events</h1>
+    </ion-header-bar>
+
+    <ion-content scroll scrollbar-y>
+            <ion-list ng-repeat="event in events">
+                <ion-item>
+                    {{name}}
+                    <h2>{{event.title}}</h2>
+
+                    <h3>{{event.owner}}</h3>
+                    <h4>{{event.fill}}/{{event.cap}}</h4>
+
+                    <p>{{event.description}}</p>
+
+                    <p>{{event.expire | date:"short"}}</p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+
+                    <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                        Delete
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+            <!--</div>-->
+        <!--</ion-scroll>-->
+    </ion-content>
+</ion-view>
