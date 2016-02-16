@@ -27,6 +27,11 @@ angular.module('ClockWork').config(function ($urlRouterProvider, $stateProvider,
         .state('eventFeed', {
             url: '/eventFeed',
             template: '<event-feed></event-feed>'
+        })
+
+        .state('eventDetail', {
+            url:'/eventFeed/:eventId',
+            template: '<event-detail></event-detail>'
         });
         //.state('partyDetails', {
         //    url: '/parties/:partyId',
