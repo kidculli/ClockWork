@@ -1,22 +1,31 @@
-<!--
-Author: Cullin Lam
-File: event-feed.html
+<ion-view view-title="Home">
 
-This file implements the view for the event feed
+    <ion-nav-buttons side="right">
+        <div class="buttons">
+            <button class="button button-icon ion-compose" ng-click="modal.show()">
+            </button>
+        </div>
+    </ion-nav-buttons>
 
-2/15/16
-    -added grid system classes
-    -added icons
--->
-<ion-view view-title="EventFeed">
-    <ion-header-bar align-title="center" class="bar-positive">
-        <h1 class="title">Events</h1>
-        <button class="button icon-right ion-compose"></button>
-    </ion-header-bar>
-
-    <ion-content scroll scrollbar-y>
+    <ion-content class="padding">
+        <!--
+        <ion-list>
+            <ion-item href="#/tab/facts">
+                111111111
+            </ion-item>
+            <ion-item href="#/tab/facts">
+                222222222
+            </ion-item>
+            <ion-item href="#/tab/facts">
+                333333333
+            </ion-item>
+        </ion-list>
+        <p>
+            <a class="button icon icon-right ion-chevron-right" href="#/tab/facts">Scientific Facts</a>
+        </p>
+        -->
         <ion-list ng-repeat="event in events">
-            <ion-item href="#/eventFeed/567">
+            <ion-item href="#/tab/facts">
                 <div class="row">
                     <div class="col col-10">
                         <i class="icon icon-left ion-social-dribbble-outline"></i>
@@ -31,7 +40,7 @@ This file implements the view for the event feed
                     <div class="col col-30">
 
 
-                   <i class="icon ion-android-alarm-clock"></i>
+                        <i class="icon ion-android-alarm-clock"></i>
 
                         <h3>{{event.expire | date:"short"}}</h3>
 
@@ -49,7 +58,8 @@ This file implements the view for the event feed
                 </div>
             </ion-item>
         </ion-list>
-        <!--</div>-->
-        <!--</ion-scroll>-->
+
+
+
     </ion-content>
 </ion-view>

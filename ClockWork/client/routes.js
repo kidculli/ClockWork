@@ -1,56 +1,68 @@
 /**
- * Created by Cullin on 2/14/16.
- *
- * file: routes.js
- *
- * This file specifies app view routing using angular ui.router
- *
- * 2/14/16
- *  - Added eventFeed route and abstract tab route
- *  - Set default route to /eventFeed
+ * Created by Son on 2/15/2016.
  */
+angular
+    .module('ClockWork')
+    .config(config);
 
-// create config for url routes
-angular.module('ClockWork').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
-
-    // make url look normal
-    //$locationProvider.html5Mode(true);
-
-    // define state values and corresponding views and url
-    $stateProvider.state('tab', {
-        url: '/tab',
-        abstract: true,
-        templateUrl: 'client/tab/tab.html'
-    })
-    // setup an abstract state for the tabs directive
-
-        .state('eventFeed', {
-            url: '/eventFeed',
-            template: '<event-feed></event-feed>'
+function config($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('tabs', {
+            url: "/tab",
+            abstract: true,
+            templateUrl: "client/tab/tab.html"
         })
-
-        .state('eventDetail', {
-            url:'/eventFeed/:eventId',
-            template: '<event-detail></event-detail>'
+        .state('tabs.home', {
+            url: "/home",
+            views: {
+                'home-tab': {
+                    templateUrl: "client/events/event-feed/event-feed.html",
+                    controller: 'HomeTabCtrl'
+                }
+            }
+        })
+        .state('tabs.facts', {
+            url: "/facts",
+            views: {
+                'home-tab': {
+                    templateUrl: "client/events/event-detail/event-detail.html",
+                    controller: 'FactCtrl'
+                }
+            }
+        })
+        .state('tabs.facts2', {
+            url: "/facts2",
+            views: {
+                'home-tab': {
+                    templateUrl: "client/templates/facts2.html"
+                }
+            }
+        })
+        .state('tabs.about', {
+            url: "/about",
+            views: {
+                'about-tab': {
+                    templateUrl: "client/templates/about.html"
+                }
+            }
+        })
+        .state('tabs.navstack', {
+            url: "/navstack",
+            views: {
+                'about-tab': {
+                    templateUrl: "client/templates/nav-stack.html"
+                }
+            }
+        })
+        .state('tabs.contact', {
+            url: "/contact",
+            views: {
+                'contact-tab': {
+                    templateUrl: "client/templates/contact.html"
+                }
+            }
         });
-        //.state('partyDetails', {
-        //    url: '/parties/:partyId',
-        //    template: '<party-details></party-details>',
-        //    // add permission to view the page
-        //    resolve: {
-        //        currentUser: ($q) => {
-        //            if(Meteor.userId() == null)
-        //            {
-        //                return $q.reject();
-        //            }
-        //            else
-        //            {
-        //                return $q.resolve();
-        //            }
-        //        }
-        //    }
-        //});
 
-// default url
-    $urlRouterProvider.otherwise("/eventFeed");
-});
+
+    $urlRouterProvider.otherwise('tab/home');
+}
