@@ -1,0 +1,41 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">New Contact</h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <form class="list">
+
+                <label class="item item-input text">
+                    <input type="text" placeholder="Name of Event">
+                </label>
+
+                <label class="item item-input text">
+                    <textarea placeholder="Description"></textarea>
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Pick Event Type:
+                    </div>
+                    <select>
+                        <option></option>
+                        <option>Eat</option>
+                        <option>Sleep</option>
+                        <option>Read</option>
+                    </select>
+                </label>
+
+                <ionic-timepicker input-obj="timePickerObject">
+                    <button class="button button-positive button-block ">
+                        <standard-time-meridian etime='timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
+                    </button>
+                </ionic-timepicker>
+
+            </form>
+            <button class="button button-positive button-block ">Confirm Event and Post</button>
+
+        </div>
+    </ion-content>
+</ion-modal-view>

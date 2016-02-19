@@ -1,45 +1,32 @@
-<!--
-    Authors: Cullin Lam, Andry Lora
-    Created on: 2/16/16
-    file: event-detail.html
-
-    This file displays the view for event detail
-
-     issues
-        -2/16/16
-            ion nav bar title does not show on ios
-            native require swipe right to go back
--->
-
-<ion-view title="Event Description" view-title="Event Description">
-    <!--<ion-nav-bar class="bar-light">-->
-        <!--<ion-nav-back-button class="platform-nav">-->
-            <!--<i class="ion-arrow-left-c"></i> Back-->
-        <!--</ion-nav-back-button>-->
-        <!--<h1 class="title">Events</h1>-->
-    <!--</ion-nav-bar>-->
-    <ion-nav-bar align-title="center" class="bar-positive">
-        <ion-nav-back-button>
-             Back
-        </ion-nav-back-button>
-        <!--<button class="button icon-left ion-android-arrow-back"></button>-->
-    </ion-nav-bar>
-    <ion-content overflow-scroll="true" padding="true" class="has-header">
+<ion-view view-title="Facts">
+    <ion-content class="padding">
+        <!--
+        <p>Banging your head against a wall uses 150 calories an hour.</p>
+        <p>Dogs have four toes on their hind feet, and five on their front feet.</p>
+        <p>The ant can lift 50 times its own weight, can pull 30 times its own weight and always falls over on its right side when intoxicated.</p>
+        <p>A cockroach will live nine days without it's head, before it starves to death.</p>
+        <p>Polar bears are left handed.</p>
+        <p>
+            <a class="button icon ion-home" href="#/tab/home"> Home</a>
+            <a class="button icon icon-right ion-chevron-right" href="#/tab/facts2">More Facts</a>
+        </p>
+        -->
         <div class="card" style="padding-left: 50px"><div>
             <p>{{name}}</p>
         </div>
-        <div>
-            <h2>{{event.title}}</h2>
+            <div>
+                <h2>{{event.title}}</h2>
 
-            <h3>{{event.expire | date:"short"}}</h3>
+                <h3>{{event.expire | date:"short"}}</h3>
 
-            <p>{{event.descr}}</p>
-        </div>
+                <p>{{event.descr}}</p>
             </div>
-            <ion-checkbox>Attending</ion-checkbox>
+        </div>
+        <ion-checkbox>Attending</ion-checkbox>
         <ion-list></ion-list>
         <div>
             <p>{{event.loc}}</p>
         </div>
+
     </ion-content>
 </ion-view>

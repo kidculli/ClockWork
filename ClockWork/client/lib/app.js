@@ -7,7 +7,7 @@
  */
 
 //list of angular module dependencies
-const modulesToLoad = ['angular-meteor','ui.router','ionic'];
+const modulesToLoad = ['angular-meteor','ui.router','ionic','ionic-timepicker'];
 
 // bootstrap the page
 function onReady() {
