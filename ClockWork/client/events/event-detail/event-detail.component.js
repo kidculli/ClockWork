@@ -2,9 +2,9 @@
  * Created by Son on 2/18/2016.
  */
 angular
-    .module('ClockWork').controller('FactCtrl', FactCtrl);
+    .module('ClockWork').controller('EventDetailCtrl', EventDetailCtrl);
 
-function FactCtrl($scope,$reactive) {
+function EventDetailCtrl($scope,$reactive) {
     // attach scope to this object
     $reactive(this).attach($scope);
 

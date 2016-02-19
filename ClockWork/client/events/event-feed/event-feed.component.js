@@ -2,9 +2,9 @@
  * Created by Son on 2/18/2016.
  */
 angular
-    .module('ClockWork').controller('HomeTabCtrl', HomeTabCtrl);
+    .module('ClockWork').controller('EventFeedCtrl', EventFeedCtrl);
 
-function HomeTabCtrl($scope, $reactive, $ionicModal) {
+function EventFeedCtrl($scope, $reactive, $ionicModal) {
     console.log('HomeTabCtrl');
 
     $ionicModal.fromTemplateUrl('client/modal/modal.html', {

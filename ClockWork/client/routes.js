@@ -12,28 +12,28 @@ function config($stateProvider, $urlRouterProvider) {
             abstract: true,
             templateUrl: "client/tab/tab.html"
         })
-        .state('tabs.home', {
-            url: "/home",
+        .state('tabs.event-feed', {
+            url: "/event-feed",
             views: {
-                'home-tab': {
+                'event-tab': {
                     templateUrl: "client/events/event-feed/event-feed.html",
-                    controller: 'HomeTabCtrl'
+                    controller: 'EventFeedCtrl'
                 }
             }
         })
-        .state('tabs.facts', {
-            url: "/facts",
+        .state('tabs.event-detail', {
+            url: "/event-detail",
             views: {
-                'home-tab': {
+                'event-tab': {
                     templateUrl: "client/events/event-detail/event-detail.html",
-                    controller: 'FactCtrl'
+                    controller: 'EventDetailCtrl'
                 }
             }
         })
         .state('tabs.facts2', {
             url: "/facts2",
             views: {
-                'home-tab': {
+                'event-tab': {
                     templateUrl: "client/templates/facts2.html"
                 }
             }
@@ -64,5 +64,5 @@ function config($stateProvider, $urlRouterProvider) {
         });
 
 
-    $urlRouterProvider.otherwise('tab/home');
+    $urlRouterProvider.otherwise('tab/event-feed');
 }
