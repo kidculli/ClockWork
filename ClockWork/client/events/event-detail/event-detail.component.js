@@ -1,6 +1,3 @@
-/**
- * Created by Son on 2/18/2016.
- */
 angular
     .module('ClockWork').controller('EventDetailCtrl', EventDetailCtrl);
 
