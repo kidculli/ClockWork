@@ -1,19 +1,36 @@
 /**
- * Created by Son on 2/18/2016.
+ * Author: Son Nguyen
+ *
+ * file: event-feed.component.js
+ *
+ * This file declare the controller for event-feed.html
  */
 angular
-    .module('ClockWork').controller('EventFeedCtrl', EventFeedCtrl);
+    .module('ClockWork').controller('EventFeedCtrl', EventFeedCtrlFunction);
 
-function EventFeedCtrl($scope, $reactive, $ionicModal) {
-    console.log('HomeTabCtrl');
+function EventFeedCtrlFunction($scope, $meteor, $reactive, $ionicModal) {
 
-    $ionicModal.fromTemplateUrl('client/modal/modal.html', {
-        scope: $scope
-    }).then(function(modal) {
-        $scope.modal = modal;
+    //uses 'this' instead of '$scope' because of controllerAs.
+    $reactive(this).attach($scope);
+
+    //declaring empty eventS
+    this.newEvent = {};
+
+    //this.events = $meteor.collection(ClockWork);
+    this.helpers({
+            events: function(){
+                return ClockWork.find({});
+            }
     });
 
-    $scope.timePickerObject = {
+    this.name = 'Cullin';
+
+    //use this variable to store the value that is selected in the timePicker.
+    var expire_time= "";
+
+    //Edit the dictionary for user preference for the timePicker package.
+    //For more information visit: https://github.com/rajeshwarpatlolla/ionic-timepicker
+    this.timePickerObject = {
         inputEpochTime: ((new Date()).getHours() * 60 * 60),  //Optional
         step: 5,  //Optional
         format: 24,  //Optional
@@ -33,72 +50,31 @@ function EventFeedCtrl($scope, $reactive, $ionicModal) {
         } else {
             var selectedTime = new Date(val * 1000);
             console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), ':', selectedTime.getUTCMinutes(), 'in UTC');
+
+            //This is not from the timePicker package. Use this variable to append into this.newEvent
+            expire_time = val;
         }
     }
 
-    $scope.event =
-    {title:"Twerk Zone",
-        description:"She's a twerkaholic!",
-        owner:'kidculli',
-        cap:4,
-        fill:2,
-        id:"123edf",
-        expire:1455499140969
+    //This is a modal to add new event
+    $ionicModal.fromTemplateUrl('client/modal/modal.html', {
+        scope: $scope
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+
+
+    this.addEvent = function(){
+        //append expire time from timePicker into newEvent
+        this.newEvent['expire'] = expire_time;
+        ClockWork.insert(this.newEvent);
+        console.log("Added Event:", this.newEvent);
+        this.newEvent = {};
     };
 
-    $scope.events = [
-        {title:"Twerk Zone",
-            description:"She's a twerkaholic!",
-            owner:'kidculli',
-            cap:4,
-            fill:2,
-            id:"123edf",
-            expire:1455499140969
-        },
-        {title:"CG Concert",
-            description:"Sick Boi !!!",
-            owner:'kidculli',
-            cap:10,
-            fill:1,
-            id:"123edfdqkgFW",
-            expire:1355496140969
-        },
-        {title:"Bowl Zone",
-            description:"Bowling Niggah",
-            owner:'kidculli',
-            cap:6,
-            fill:3,
-            id:"123edf",
-            expire:1253599140969
-        },
-        {title:"Kanye Tour",
-            description:"She's a twerkaholic!",
-            owner:'kidculli',
-            cap:4,
-            fill:2,
-            id:"123edf",
-            expire:1455499140969
-        },
-        {title:"Kanye Tour",
-            description:"She's a twerkaholic!",
-            owner:'kidculli',
-            cap:4,
-            fill:2,
-            id:"123edf",
-            expire:1455499140969
-        },
-        {title:"Kanye Tour",
-            description:"She's a twerkaholic!",
-            owner:'kidculli',
-            cap:4,
-            fill:2,
-            id:"123edf",
-            expire:1455499140969
-        }
-    ];
-    $scope.name = 'Cullin';
-
-
+    this.removeEvent = function(event){
+        ClockWork.remove({_id: event._id});
+    }
 }
 
 

@@ -1,5 +1,8 @@
 /**
  * Created by Son on 2/15/2016.
+ * File: /ClockWork/client/routes.js
+ * Description: configure the routes for all files.
+ *
  */
 angular
     .module('ClockWork')
@@ -17,7 +20,8 @@ function config($stateProvider, $urlRouterProvider) {
             views: {
                 'event-tab': {
                     templateUrl: "client/events/event-feed/event-feed.html",
-                    controller: 'EventFeedCtrl'
+                    controller: 'EventFeedCtrl',
+                    controllerAs: 'EventFeed'
                 }
             }
         })

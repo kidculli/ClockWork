@@ -1,3 +1,12 @@
+<!--
+    Authors: Son Nguyen
+    Created on: 2/18/2016
+    file: /ClockWork/client/modal/modal.html
+
+    Description: This file displace the modal to add new event.
+    comment: This page uses controllerAs EventFeed to access the controller EventFeedCtrl. Need to do some form
+             validation later on.
+-->
 <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-positive">
         <h1 class="title">New Contact</h1>
@@ -8,18 +17,18 @@
             <form class="list">
 
                 <label class="item item-input text">
-                    <input type="text" placeholder="Name of Event">
+                    <input type="text" placeholder="Name of Event" ng-model="EventFeed.newEvent.title">
                 </label>
 
                 <label class="item item-input text">
-                    <textarea placeholder="Description"></textarea>
+                    <textarea placeholder="Description" ng-model="EventFeed.newEvent.description"></textarea>
                 </label>
 
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Pick Event Type:
                     </div>
-                    <select>
+                    <select ng-model="EventFeed.newEvent.event_type">
                         <option></option>
                         <option>Eat</option>
                         <option>Sleep</option>
@@ -27,14 +36,15 @@
                     </select>
                 </label>
 
-                <ionic-timepicker input-obj="timePickerObject">
-                    <button class="button button-positive button-block ">
-                        <standard-time-meridian etime='timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
+                <ionic-timepicker input-obj="EventFeed.timePickerObject">
+                    <button class="button button-positive button-block">
+                        <standard-time-meridian etime='EventFeed.timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
                     </button>
                 </ionic-timepicker>
 
+                <button class="button button-positive button-block " ng-click="EventFeed.addEvent(); modal.hide();">Confirm Event and Post</button>
             </form>
-            <button class="button button-positive button-block ">Confirm Event and Post</button>
+
 
         </div>
     </ion-content>
