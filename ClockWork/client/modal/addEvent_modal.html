@@ -13,22 +13,22 @@
         <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
     </ion-header-bar>
     <ion-content class="padding">
-        <div class="list">
+        <div class="list" ng-controller="addEventCtrl as addEvent">
             <form class="list">
 
                 <label class="item item-input text">
-                    <input type="text" placeholder="Name of Event" ng-model="EventFeed.newEvent.title">
+                    <input type="text" placeholder="Name of Event" ng-model="addEvent.newEvent.title">
                 </label>
 
                 <label class="item item-input text">
-                    <textarea placeholder="Description" ng-model="EventFeed.newEvent.description"></textarea>
+                    <textarea placeholder="Description" ng-model="addEvent.newEvent.description"></textarea>
                 </label>
 
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Pick Event Type:
                     </div>
-                    <select ng-model="EventFeed.newEvent.event_type">
+                    <select ng-model="addEvent.newEvent.event_type">
                         <option></option>
                         <option>Eat</option>
                         <option>Sleep</option>
@@ -36,16 +36,14 @@
                     </select>
                 </label>
 
-                <ionic-timepicker input-obj="EventFeed.timePickerObject">
+                <ionic-timepicker input-obj="addEvent.timePickerObject">
                     <button class="button button-positive button-block">
-                        <standard-time-meridian etime='EventFeed.timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
+                        <standard-time-meridian etime='addEvent.timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
                     </button>
                 </ionic-timepicker>
 
-                <button class="button button-positive button-block " ng-click="EventFeed.addEvent(); modal.hide();">Confirm Event and Post</button>
+                <button class="button button-positive button-block " ng-click="addEvent.addEvent(); modal.hide();">Confirm Event and Post</button>
             </form>
-
-
         </div>
     </ion-content>
 </ion-modal-view>
