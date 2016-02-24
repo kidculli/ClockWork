@@ -27,12 +27,13 @@ function addEventFunction($scope, $meteor, $reactive) {
     });
 
     //use this variable to store the value that is selected in the timePicker.
-    var expire_time= "";
+    var expire_time= 0;
 
     //Edit the dictionary for user preference for the timePicker package.
     //For more information visit: https://github.com/rajeshwarpatlolla/ionic-timepicker
+    //TimePicker uses Unix time stamp
     this.timePickerObject = {
-        inputEpochTime: ((new Date()).getHours() * 60 * 60),  //Optional
+        inputEpochTime: 0, //((new Date()).getHours() * 60 * 60),  //Optional
         step: 5,  //Optional
         format: 24,  //Optional
         titleLabel: '24-hour Format',  //Optional
@@ -53,16 +54,20 @@ function addEventFunction($scope, $meteor, $reactive) {
             console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), ':', selectedTime.getUTCMinutes(), 'in UTC');
 
             //This is not from the timePicker package. Use this variable to append into this.newEvent
-            expire_time = val;
+            expire_time = val*1000 + (new Date).getTime();  //Have to multiply 1000 to the epoch time.
         }
     }
 
     this.addEvent = function(){
         //append expire time from timePicker into newEvent
         this.newEvent['expire'] = expire_time;
+        //reset selected time to 0
+        expire_time = 0;
+
         ClockWork.insert(this.newEvent);
         console.log("Added Event:", this.newEvent);
         this.newEvent = {};
+
     };
 
 }

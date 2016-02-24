@@ -36,6 +36,29 @@
                     </select>
                 </label>
 
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Capacity
+                        </div>
+                        <select ng-model = "addEvent.newEvent.cap">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>10+</option>
+                        </select>
+                    </label>
+                </div>
+
+
+
                 <ionic-timepicker input-obj="addEvent.timePickerObject">
                     <button class="button button-positive button-block">
                         <standard-time-meridian etime='addEvent.timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
