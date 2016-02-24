@@ -3,6 +3,9 @@
  * File: /ClockWork/client/routes.js
  * Description: configure the routes for all files.
  *
+ *  -2/24/16 C Lam
+ *      -added /:eventId to tabs.event-detail route
+ *      -added controllerAs EventDetail
  */
 angular
     .module('ClockWork')
@@ -26,11 +29,12 @@ function config($stateProvider, $urlRouterProvider) {
             }
         })
         .state('tabs.event-detail', {
-            url: "/event-detail",
+            url: "/event-detail/:eventId",
             views: {
                 'event-tab': {
                     templateUrl: "client/events/event-detail/event-detail.html",
-                    controller: 'EventDetailCtrl'
+                    controller: 'EventDetailCtrl',
+                    controllerAs: 'EventDetail'
                 }
             }
         })

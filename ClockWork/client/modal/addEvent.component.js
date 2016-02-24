@@ -7,6 +7,10 @@
  * file: event-feed.component.js
  *
  * This file declare the controller for event-feed.html
+ *
+ *  -2/24/16 C Lam
+ *      -Added fill init to 1
+ *      -Added time_created, time_expire, and owner to new event
  */
 angular
     .module('ClockWork').controller('addEventCtrl', addEventFunction);
@@ -22,7 +26,7 @@ function addEventFunction($scope, $meteor, $reactive) {
     //this.events = $meteor.collection(ClockWork);
     this.helpers({
         events: function(){
-            return ClockWork.find({});
+            return Events.find({});
         }
     });
 
@@ -59,12 +63,27 @@ function addEventFunction($scope, $meteor, $reactive) {
     }
 
     this.addEvent = function(){
+        ////convert cap to int if not 10+
+        if(this.newEvent['cap'].search('\\++') == -1)
+        {
+            this.newEvent['cap'] = parseInt(this.newEvent['cap'],10);
+        }
+        // append time created to newEvent date format is number milliseconds since epoch
+        this.newEvent['time_created'] = new Date().getTime();
         //append expire time from timePicker into newEvent
-        this.newEvent['expire'] = expire_time;
+        this.newEvent['time_expire'] = expire_time;
+        // initialize current fill of event to 1
+        this.newEvent['fill'] = 1;
+        // hardcode user id, it will be changed to Meteor.UserId() when sign in implemented
+        this.newEvent['owner'] = 'ClockWorkMaster';
+        // add empty array for attendees
+        this.newEvent['attendees'] = [];
+        // add empty object for loc
+        this.newEvent['loc'] = {};
         //reset selected time to 0
         expire_time = 0;
 
-        ClockWork.insert(this.newEvent);
+        Events.insert(this.newEvent);
         console.log("Added Event:", this.newEvent);
         this.newEvent = {};
 

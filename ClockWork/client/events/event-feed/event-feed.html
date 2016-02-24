@@ -5,10 +5,14 @@
 
     This file displays the view for event feed
 
-    Last Edited: 2/21/2012
+    2/23/16 C Lam
+        -Updated expire to time_expire
+
+    2/21/2016
         By: Son Nguyen
         Comment: Added controllerAs EventFeed to access functions and variables in eventFeedCtrl and removeEvent().
                  Using the future Angular 2 style of controllerAs help to know what controller is being use.
+
 -->
 
 <ion-view view-title="Event">
@@ -22,7 +26,7 @@
 
     <ion-content class="padding">
         <ion-list ng-repeat="event in EventFeed.events">
-            <ion-item href="#/tab/event-detail">
+            <ion-item href="#/tab/event-detail/{{event._id}}">
                 <div class="row">
                     <div class="col col-10">
                         <i class="icon icon-left ion-social-dribbble-outline"></i>
@@ -37,7 +41,7 @@
                     <div class="col col-30">
 
                         <i class="icon ion-android-alarm-clock"></i>
-                        <h3>{{event.expire | date:"short"}}</h3>
+                        <h3>{{event.time_expire | date:"short"}}</h3>
 
                     </div>
                     <div class="col col-20">

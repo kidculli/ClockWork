@@ -19,7 +19,7 @@ function EventFeedCtrlFunction($scope, $meteor, $reactive, $ionicModal) {
     //this.events = $meteor.collection(ClockWork);
     this.helpers({
             events: function(){
-                return ClockWork.find({});
+                return Events.find({});
             }
     });
 
@@ -34,7 +34,7 @@ function EventFeedCtrlFunction($scope, $meteor, $reactive, $ionicModal) {
 
 
     this.removeEvent = function(event){
-        ClockWork.remove({_id: event._id});
+        Events.remove({_id: event._id});
     }
 }
 

@@ -6,10 +6,15 @@
     Description: This file displace the modal to add new event.
     comment: This page uses controllerAs EventFeed to access the controller EventFeedCtrl. Need to do some form
              validation later on.
+
+     2/23/16 C Lam
+        - Added more options
+        - Updated Title
+        - Removed 1 cap as option
 -->
 <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-positive">
-        <h1 class="title">New Contact</h1>
+        <h1 class="title">New Event</h1>
         <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
     </ion-header-bar>
     <ion-content class="padding">
@@ -30,9 +35,11 @@
                     </div>
                     <select ng-model="addEvent.newEvent.event_type">
                         <option></option>
-                        <option>Eat</option>
-                        <option>Sleep</option>
-                        <option>Read</option>
+                        <option>Dining</option>
+                        <option>Coffee</option>
+                        <option>Music</option>
+                        <option>Personal Care</option>
+                        <option>Outdoors</option>
                     </select>
                 </label>
 
@@ -42,7 +49,6 @@
                             Capacity
                         </div>
                         <select ng-model = "addEvent.newEvent.cap">
-                            <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>

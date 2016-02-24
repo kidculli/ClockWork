@@ -14,25 +14,33 @@
                  ionic's views and functionality.
         source: https://github.com/driftyco/ionic-starter-tabs
                 http://codepen.io/ionic/pen/odqCz
+
+     -2/24/16 C Lam
+        - Fixed controller references
+        - Added Ng-Hide on cap var
+        - Need to implement attendee list once users added
 -->
 
 <ion-view view-title="Facts">
     <ion-content class="padding">
         <div class="card" style="padding-left: 50px"><div>
-            <p>{{name}}</p>
+            <p>{{EventDetail.event.owner}}</p>
         </div>
             <div>
-                <h2>{{event.title}}</h2>
+                <h2>{{EventDetail.event.title}}</h2>
 
-                <h3>{{event.expire | date:"short"}}</h3>
+                <h3>{{EventDetail.event.time_expire | date:"short"}}</h3>
 
-                <p>{{event.descr}}</p>
+                <p>{{EventDetail.event.description}}</p>
+            </div>
+            <div>
+                <h2 ng-hide="EventDetail.hide">{{EventDetail.event.cap - EventDetail.event.fill}} spots remaining!</h2>
             </div>
         </div>
         <ion-checkbox>Attending</ion-checkbox>
         <ion-list></ion-list>
         <div>
-            <p>{{event.loc}}</p>
+            <p>{{EventDetail.event.loc}}</p>
         </div>
     </ion-content>
 </ion-view>
