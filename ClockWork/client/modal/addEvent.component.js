@@ -61,10 +61,13 @@ function addEventFunction($scope, $meteor, $reactive) {
     this.addEvent = function(){
         //append expire time from timePicker into newEvent
         this.newEvent['expire'] = expire_time;
+        //reset selected time to 0
+        expire_time = 0;
 
         ClockWork.insert(this.newEvent);
         console.log("Added Event:", this.newEvent);
         this.newEvent = {};
+
     };
 
 }
