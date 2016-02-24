@@ -6,36 +6,34 @@
  * This file declare the controller for event-feed.html
  */
 angular
-    .module('ClockWork').controller('EventFeedCtrl', EventFeedCtrlFunction);
+    .module('ClockWork').controller('EventFeedCtrl',function($scope, $meteor, $reactive, $ionicModal) {
 
-function EventFeedCtrlFunction($scope, $meteor, $reactive, $ionicModal) {
+        //uses 'this' instead of '$scope' because of controllerAs.
+        $reactive(this).attach($scope);
 
-    //uses 'this' instead of '$scope' because of controllerAs.
-    $reactive(this).attach($scope);
+        //declaring empty eventS
+        this.newEvent = {};
 
-    //declaring empty eventS
-    this.newEvent = {};
-
-    //this.events = $meteor.collection(ClockWork);
-    this.helpers({
+        //this.events = $meteor.collection(ClockWork);
+        this.helpers({
             events: function(){
                 return Events.find({});
             }
-    });
+        });
 
-    this.name = 'Cullin';
-
-    //This is a modal to add new event
-    $ionicModal.fromTemplateUrl('client/modal/addEvent_modal.html', {
-        scope: $scope
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
+        //This is a modal to add new event
+        $ionicModal.fromTemplateUrl('client/modal/addEvent_modal.html', {
+            scope: $scope
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
 
 
-    this.removeEvent = function(event){
-        Events.remove({_id: event._id});
+        this.removeEvent = function(event){
+            Events.remove({_id: event._id});
+        }
     }
-}
+);
+
 
 
