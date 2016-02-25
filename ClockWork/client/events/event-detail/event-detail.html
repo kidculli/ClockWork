@@ -30,6 +30,7 @@
                 <h2>{{EventDetail.event.title}}</h2>
 
                 <h3>{{EventDetail.event.time_expire | date:"short"}}</h3>
+                <h4>{{EventDetail.time_count | secondsToDateTime | date:'HH:mm:ss'}}</h4>
 
                 <p>{{EventDetail.event.description}}</p>
             </div>

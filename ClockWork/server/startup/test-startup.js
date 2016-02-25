@@ -7,6 +7,8 @@
  *      -changed usage of ClockWork var to Event var name
  *      -removed id from default events
  *      - added cap and fill keys to document
+ *  -2/25/16
+ *      -added expire field boolean
  *
  */
 if (Meteor.isServer) {
@@ -23,6 +25,7 @@ if (Meteor.isServer) {
                     cap:5,
                     fill:2,
                     event_type: "Concert",
+                    expired: false,
                     loc: {
                         address: "Atrium Rd, Wilmington MA",
                         coord: ["74", "88"]
