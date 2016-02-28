@@ -3,7 +3,8 @@
  *
  * file: countdownTimer.component.js
  *
- * This file specifies a component for countdown timer
+ * This file specifies a component for countdown timer utilizes parent controller scope to
+ * determine countdown time constructor param
  *
  * -source https://gist.github.com/CMCDragonkai/6282750
  *
@@ -17,86 +18,37 @@ angular.module("ClockWork").directive("countdownTimer",function(){
     return {
         restrict:"E",
         template: "<h3>{{countdownTimer.time_count| secondsToDateTime | date:'HH:mm:ss'}}</h3>",
-        replace: true,
         controllerAs:"countdownTimer",
         controller: function($scope, $element ,$reactive){
             $reactive(this).attach($scope);
-                //$element.text(attr.init);
-                //attr.$observe('init', function(value){
-                //    $element.text(attr.init);
-                //});
-            //initialize scope var null
-            //$scope.countdown = 'undefined';
-            //set watch on init, wait for it to be initalized then start reactive countdown clock
-            //$scope.$watch('init', function () {
-            //    console.log($scope.init);
-            //    var start_time = Math.floor(($scope.init - new Date().getTime())/1000);
-            //    //// initialize reactive countdown object with start time
-            //    $scope.countdown = new ReactiveCountdown(start_time,{steps:1});
-            //    // start the timer
-            //    $scope.countdown.start();
-            //    console.log($scope.countdown.get());
-            //
-            //});
 
-            //test code
+            //List of possible parent controller names for this directive *controllerAs name
             const ctrl_list = ['event','EventDetail'];
+            // Iterate through array and get the time_expire value from parent ctrl
             for (var i = 0; i< ctrl_list.length ; i++) {
                 if ($scope.$parent.hasOwnProperty(ctrl_list[i])){
                     if(ctrl_list[i] == 'event') {
+                        // get difference between current time and event time in seconds
                         var event_expire = Math.floor(($scope.$parent.event.time_expire - new Date().getTime())/1000);
+                        break;
                     }
                     else if(ctrl_list[i] == 'EventDetail') {
                         var event_expire = Math.floor(($scope.$parent.EventDetail.event.time_expire - new Date().getTime())/1000);
+                        break;
                     }
                     else {
                         console.log("Parent ctrl not found");
                     }
                 }
             }
-            //console.log($scope.$parent.hasOwnProperty('event'));
-            //for (ctrl in _ctrl_list) {
-            //    console.log(_ctrl_list);
-            //    if($scope.$parent.hasOwnProperty(ctrl)) {
-            //        console.log("parent ctrl: "+ctrl);
-            //    }
-            //}
-            //console.log($scope.$parent);
-            //console.log(new Date($scope.$parent.event.time_expire));
-             //get data from parent scope and change to seconds remaining
-            //var event_expire = Math.floor(($scope.$parent.event.time_expire - new Date().getTime())/1000);
-            ////var event_expire = Math.floor(($scope.$parent.EventDetail.event.time_expire - new Date().getTime())/1000);
+            // create new reactive Countdown //uses flyandi:reactive-countdown meteor package
             var countdown = new ReactiveCountdown(event_expire,{steps:1});
-            ////    // start the timer
+            //start the timer
             countdown.start();
-
+            // reactively get the current timer time
             this.helpers({time_count: function() {
                 return countdown.get();
             }});
-            //this.helpers({time_count: function(){
-            //    if ($scope.countdown !== 'undefined') {
-            //        console.log($scope.countdown);
-            //        return $scope.countdown.get();
-            //
-            //    }
-            //    else {
-            //        return '00:00:00';
-            //    }
-            //}});
-            }
-        //link: function($scope, $element, attr){
-        //    //$element.text(attr.init);
-        //    //attr.$observe('init', function(value){
-        //    //    $element.text(attr.init);
-        //    //});
-        //
-        //    // convert milliseconds to seconds init will be the time_expire value
-        //    var start_time = Math.floor((this.event.time_expire - new Date().getTime())/1000);
-        //    // initialize reactive countdown object with start time
-        //    var countdown = new ReactiveCountdown(start_time,{steps:1});
-        //    // start countdown
-        //    countdown.start();
-        //
-        //}
+        }
     };
 });

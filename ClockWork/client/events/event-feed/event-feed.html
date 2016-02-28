@@ -13,6 +13,10 @@
         Comment: Added controllerAs EventFeed to access functions and variables in eventFeedCtrl and removeEvent().
                  Using the future Angular 2 style of controllerAs help to know what controller is being use.
 
+    2/27/2016 C Lam
+        -Added use of countdown-timer directive
+
+
 -->
 
 <ion-view view-title="Event">
@@ -40,8 +44,6 @@
                         <i class="icon ion-android-alarm-clock"></i>
                         <h3>{{event.time_expire | date:"short"}}</h3>
                         <countdown-timer></countdown-timer>
-                        <!--<timer end-time="{{event.time_expire}}">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>-->
-                        <!--<timer interval="1000">{{5}} hour{{4}}, {{34}} minute{{45}}, {{21}} second{{20}}.</timer>-->
                     </div>
                     <div class="col col-20">
                         <i class="icon ion-person-stalker"></i>
