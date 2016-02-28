@@ -11,6 +11,9 @@
  *  -2/24/16 C Lam
  *      -Added fill init to 1
  *      -Added time_created, time_expire, and owner to new event
+ *
+ *   -2/27/16 C Lam
+ *      - Added expired value to new event init false
  */
 angular
     .module('ClockWork').controller('addEventCtrl', function($scope, $reactive) {
@@ -78,6 +81,8 @@ angular
             this.newEvent['attendees'] = [];
             // add empty object for loc
             this.newEvent['loc'] = {};
+            // add expired field
+            this.newEvent['expired'] = false;
             Events.insert(this.newEvent);
             console.log("Added Event:", this.newEvent);
             //reset selected time to 0

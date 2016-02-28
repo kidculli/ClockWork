@@ -4,6 +4,10 @@
  * file: event-feed.component.js
  *
  * This file declare the controller for event-feed.html
+ *
+ * 2/28/16
+ *  -CLAM
+ *      -added expired filter to events helper function
  */
 angular
     .module('ClockWork').controller('EventFeedCtrl',function($scope, $meteor, $reactive, $ionicModal) {
@@ -17,7 +21,7 @@ angular
         //this.events = $meteor.collection(ClockWork);
         this.helpers({
             events: function(){
-                return Events.find({});
+                return Events.find({expired:false});
             }
         });
 
