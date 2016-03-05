@@ -13,7 +13,7 @@
         - Removed 1 cap as option
 -->
 <ion-modal-view>
-    <ion-header-bar class="bar bar-header bar-positive">
+    <ion-header-bar class="bar bar-header bar-dark">
         <h1 class="title">New Event</h1>
         <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
     </ion-header-bar>
@@ -66,12 +66,12 @@
 
 
                 <ionic-timepicker input-obj="addEvent.timePickerObject">
-                    <button class="button button-positive button-block">
+                    <button class="button button-dark button-block">
                         <standard-time-meridian etime='addEvent.timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
                     </button>
                 </ionic-timepicker>
 
-                <button class="button button-positive button-block " ng-click="addEvent.addEvent(); modal.hide();">Confirm Event and Post</button>
+                <button class="button button-dark button-block " ng-click="addEvent.addEvent(); modal.hide();">Confirm Event and Post</button>
             </form>
         </div>
     </ion-content>

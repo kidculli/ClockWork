@@ -6,6 +6,9 @@
  *  -2/24/16 C Lam
  *      -added /:eventId to tabs.event-detail route
  *      -added controllerAs EventDetail
+ *
+ *  -3/05/16 Son Nguyen
+ *      -changed all the sub-views to even-tab. Using side bar menu.
  */
 angular
     .module('ClockWork')
@@ -49,7 +52,7 @@ function config($stateProvider, $urlRouterProvider) {
         .state('tabs.about', {
             url: "/about",
             views: {
-                'about-tab': {
+                'event-tab': {
                     templateUrl: "client/templates/about.html"
                 }
             }
@@ -57,7 +60,7 @@ function config($stateProvider, $urlRouterProvider) {
         .state('tabs.navstack', {
             url: "/navstack",
             views: {
-                'about-tab': {
+                'event-tab': {
                     templateUrl: "client/templates/nav-stack.html"
                 }
             }
@@ -65,7 +68,7 @@ function config($stateProvider, $urlRouterProvider) {
         .state('tabs.contact', {
             url: "/contact",
             views: {
-                'contact-tab': {
+                'event-tab': {
                     templateUrl: "client/templates/contact.html"
                 }
             }

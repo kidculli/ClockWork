@@ -13,6 +13,8 @@ angular
         $reactive(this).attach($scope);
 
         var event_id = $stateParams.eventId;
+        console.log("LOOOOOOOOOOOOOOOOOOOOOOOOOK");
+        console.log(event_id);
         //hardcode user's name until we get the User collections up
         this.name = "ClockWork Master";
         this.event = Events.findOne({'_id':event_id});
