@@ -1,15 +1,48 @@
-<ion-tabs class="tabs-icon-top tabs-positive">
+<ion-side-menus enable-menu-with-back-views="false">
 
-    <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-dark">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
         <ion-nav-view name="event-tab"></ion-nav-view>
-    </ion-tab>
+    </ion-side-menu-content>
 
-    <ion-tab title="About" icon="ion-ios-information" href="#/tab/about">
-        <ion-nav-view name="about-tab"></ion-nav-view>
-    </ion-tab>
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar-assertive">
+            <h1 class="title">Left Menu</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list">
+                <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
+                <a href="#/tab/home" class="item" menu-close>Home</a>
+                <a href="#/tab/about" class="item" menu-close>About</a>
+                <a href="#/tab/contact" class="item" menu-close>Contact</a>
+            </ul>
+        </ion-content>
+    </ion-side-menu>
 
-    <ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">
-        <ion-nav-view name="contact-tab"></ion-nav-view>
-    </ion-tab>
+</ion-side-menus>
 
-</ion-tabs>
+<!-- Old Navigation bar. Keep to remember the difference -->
+<!--<ion-tabs class="tabs-icon-top tabs-positive">-->
+
+<!--<ion-tab title="Home" icon="ion-home" href="#/tab/home">-->
+<!--<ion-nav-view name="event-tab"></ion-nav-view>-->
+<!--</ion-tab>-->
+
+<!--<ion-tab title="About" icon="ion-ios-information" href="#/tab/about">-->
+<!--<ion-nav-view name="about-tab"></ion-nav-view>-->
+<!--</ion-tab>-->
+
+<!--<ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">-->
+<!--<ion-nav-view name="contact-tab"></ion-nav-view>-->
+<!--</ion-tab>-->
+
+<!--</ion-tabs>-->
