@@ -61,6 +61,10 @@ angular
             if (typeof (val) === 'undefined') {
                 console.log('Time not selected');
 
+                // Not part of the timePicker package. check_time will be use to check if the user never selected a time.
+                check_time = true
+                console.log(".00", check_time);
+
             } else {
                 var selectedTime = new Date(val * 1000);
                 console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), ':', selectedTime.getUTCMinutes(), 'in UTC');
@@ -68,19 +72,21 @@ angular
                 //This is not from the timePicker package. Use this variable to append into this.newEvent
                 expire_time = val*1000 + (new Date).getTime();  //Have to multiply 1000 to the epoch time.
                 check_time = false;
+                console.log(".11", check_time);
             }
 
             // This is also not form the time picker package.
             // Displace ng-show validation for timePicker if the user selected 00. 0 time does not make logic sense.
             if(val == 0){
                 check_time = true;
+                console.log(".22", check_time);
             }
         }
 
         // Check this website out for the idea http://codepen.io/sevilayha/pen/HnxkJ
         // Displace ng-show to validate if timePicker have not been selected.
         this.isTime = function(){
-            if(check_time){
+            if(check_time === true){
                 // want to return "true" so ng-show will always show up in the html.
                 return true;
             }
@@ -89,14 +95,24 @@ angular
             }
         }
 
-        // Custom validation if use selected proper time for timePicker.
+        // Custom validation selecting proper time for timePicker.
+        // Additional Notes: This function should be call first before addEvent() on the ng-click in the
+        //                   addEvent_modal.html line 89. If addEvent() is called first, then check_time will be
+        //                   reset to true and break timeReset(). You want check_time to be "false" if the user selected
+        //                   something and then hide the modal.
         this.timeReset = function(){
-            if(check_time){
+            // if the user selected a proper time then hide the modal.
+            if(check_time === false){
+                console.log(".0 Suppose to hide");
+                $scope.modal.hide();
                 // Want to return "false" to validate onClick if the user have selected the proper for timePicker.
-                return false;
-            }
-            else{
                 return true;
+            }
+            // else if time have not been selected properly, then continue showing the modal.
+            else if(check_time === true) {
+                console.log(".1 Suppose to show");
+                $scope.modal.show();
+                return false;
             }
         }
 
@@ -128,7 +144,7 @@ angular
                 expire_time = 0;
                 //reset newEvent
                 this.newEvent = {};
-                // Reset the ng-show for the timePicker to show up again when the form is submitted.
+                // Reset the ng-show for the timePicker validation to show up again when the form is submitted.
                 check_time = true
             }
 

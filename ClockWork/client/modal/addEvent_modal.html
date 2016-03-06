@@ -86,7 +86,7 @@
                 </ionic-timepicker>
                 <span style="color:red" ng-show="addEvent.isTime()">Please select time</span>
 
-                <button type="submit" class="button button-dark button-block " ng-click="addEvent.addEvent(eventForm.$valid) && modal.hide() && addEvent.timeReset();">Confirm Event and Post</button>
+                <button type="submit" class="button button-dark button-block " ng-click="addEvent.timeReset() && addEvent.addEvent(eventForm.$valid);">Confirm Event and Post</button>
             </form>
         </div>
     </ion-content>
