@@ -11,6 +11,9 @@
         - Added more options
         - Updated Title
         - Removed 1 cap as option
+
+     3/05/16 Son Nguyen
+        - Added form validation
 -->
 <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-dark">
@@ -19,21 +22,27 @@
     </ion-header-bar>
     <ion-content class="padding">
         <div class="list" ng-controller="addEventCtrl as addEvent">
-            <form class="list">
+            <form class="list" name="eventForm"  >
 
                 <label class="item item-input text">
-                    <input type="text" placeholder="Name of Event" ng-model="addEvent.newEvent.title">
+                    <input type="text" placeholder="Name of Event" name="eventName" ng-model="addEvent.newEvent.title" required>
                 </label>
+                <span style="color:red" ng-show="eventForm.eventName.$pristine && eventForm.eventName.$invalid || eventForm.eventName.$dirty && eventForm.eventName.$invalid">
+                        <span ng-show="eventForm.eventName.$pristine && eventForm.eventName.$invalid || eventForm.eventName.$dirty && eventForm.eventName.$invalid">Event name is required.</span>
+                </span>
 
                 <label class="item item-input text">
-                    <textarea placeholder="Description" ng-model="addEvent.newEvent.description"></textarea>
+                    <textarea placeholder="Description" ng-model="addEvent.newEvent.description" name="eventDetail" required></textarea>
                 </label>
+                <span style="color:red" ng-show="eventForm.eventDetail.$pristine && eventForm.eventDetail.$invalid || eventForm.eventDetail.$dirty && eventForm.eventDetail.$invalid">
+                        <span ng-show="eventForm.eventDetail.$pristine && eventForm.eventDetail.$invalid || eventForm.eventDetail.$dirty && eventForm.eventDetail.$invalid">Event detail is required.</span>
+                </span>
 
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Pick Event Type:
                     </div>
-                    <select ng-model="addEvent.newEvent.event_type">
+                    <select ng-model="addEvent.newEvent.event_type" name="eventType" required>
                         <option></option>
                         <option>Dining</option>
                         <option>Coffee</option>
@@ -42,13 +51,16 @@
                         <option>Outdoors</option>
                     </select>
                 </label>
+                 <span style="color:red" ng-show="eventForm.eventType.$pristine && eventForm.eventType.$invalid || eventForm.eventType.$dirty && eventForm.eventType.$invalid">
+                        <span ng-show="eventForm.eventType.$pristine && eventForm.eventType.$invalid || eventForm.eventType.$dirty && eventForm.eventType.$invalid">Event type is required.</span>
+                </span>
 
                 <div class="list">
                     <label class="item item-input item-select">
                         <div class="input-label">
                             Capacity
                         </div>
-                        <select ng-model = "addEvent.newEvent.cap">
+                        <select ng-model = "addEvent.newEvent.cap" name="eventCapacity" required>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -62,7 +74,9 @@
                         </select>
                     </label>
                 </div>
-
+                <span style="color:red" ng-show="eventForm.eventCapacity.$pristine && eventForm.eventCapacity.$invalid || eventForm.eventCapacity.$dirty && eventForm.eventCapacity.$invalid">
+                        <span ng-show="eventForm.eventCapacity.$pristine && eventForm.eventCapacity.$invalid || eventForm.eventCapacity.$dirty && eventForm.eventCapacity.$invalid">Event capacity is required.</span>
+                </span>
 
 
                 <ionic-timepicker input-obj="addEvent.timePickerObject">
@@ -70,8 +84,9 @@
                         <standard-time-meridian etime='addEvent.timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
                     </button>
                 </ionic-timepicker>
+                <span style="color:red" ng-show="addEvent.isTime()">Please select time</span>
 
-                <button class="button button-dark button-block " ng-click="addEvent.addEvent(); modal.hide();">Confirm Event and Post</button>
+                <button type="submit" class="button button-dark button-block " ng-click="addEvent.addEvent(eventForm.$valid) && modal.hide() && addEvent.timeReset();">Confirm Event and Post</button>
             </form>
         </div>
     </ion-content>
