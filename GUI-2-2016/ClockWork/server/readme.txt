@@ -1,0 +1,13 @@
+Author: Cullin Lam
+Created on: 2/6/16
+
+This directory shall store code that is accessible only to the server.
+
+Any directory named server is not loaded on the client. Similar to wrapping your code in if (Meteor.isServer) { ... },
+except the client never even receives the code. Any sensitive code that you don't want served to the client, such as
+code containing passwords or authentication mechanisms, should be kept in the server directory.
+
+Meteor gathers all your JavaScript files, excluding anything under the client, public, and private subdirectories,
+and loads them into a Node.js server instance. In Meteor, your server code runs in a single thread per request, not
+in the asynchronous callback style typical of Node. We find the linear execution model a better fit for the typical
+server code in a Meteor application.

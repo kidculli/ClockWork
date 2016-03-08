@@ -1,0 +1,62 @@
+<!--
+    Authors: Cullin Lam, Son Nguyen
+    Created on: 2/14/16
+    file: /ClockWork/events/event-feed/event-feed.html
+
+    This file displays the view for event feed
+
+    2/23/16 C Lam
+        -Updated expire to time_expire
+
+    2/21/2016
+        By: Son Nguyen
+        Comment: Added controllerAs EventFeed to access functions and variables in eventFeedCtrl and removeEvent().
+                 Using the future Angular 2 style of controllerAs help to know what controller is being use.
+
+    2/27/2016 C Lam
+        -Added use of countdown-timer directive
+
+
+-->
+
+<ion-view view-title="Event">
+
+    <ion-nav-buttons side="right">
+        <div class="buttons">
+            <button class="button button-icon ion-compose" ng-click="modal.show()">
+            </button>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+        <ion-list ng-repeat="event in EventFeed.events">
+            <ion-item href="#/tab/event-detail/{{event._id}}">
+                <div class="row">
+                    <div class="col col-10">
+                        <i class="icon icon-left ion-social-dribbble-outline"></i>
+                    </div>
+                    <div class="col col-40">
+                        <h2>{{event.title}}</h2>
+                        <h3>{{event.owner}}</h3>
+                    </div>
+                    <div class="col col-30">
+
+                        <i class="icon ion-android-alarm-clock"></i>
+                        <!--<h3>{{event.time_expire | date:"short"}}</h3>-->
+                        <countdown-timer></countdown-timer>
+                    </div>
+                    <div class="col col-20">
+                        <i class="icon ion-person-stalker"></i>
+
+                        <h2>{{event.fill}}/{{event.cap}}</h2>
+                        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+                    </div>
+
+                    <ion-option-button class="button-assertive" ng-click="EventFeed.removeEvent(event)">
+                        Delete
+                    </ion-option-button>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
