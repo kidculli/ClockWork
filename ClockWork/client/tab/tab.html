@@ -1,3 +1,16 @@
+<!--
+
+Author: Son Nguyen
+file: index.html
+
+This file serves as the base view for our application, it features a side menu that allows
+navigation to different views
+
+3/5/16
+    -CLAM
+        -added expose-aside-when='large' attribute to keep side menu open on large devices ie. tablet or browser
+
+-->
 <ion-side-menus enable-menu-with-back-views="false">
 
     <ion-side-menu-content>
@@ -14,7 +27,7 @@
         <ion-nav-view name="event-tab"></ion-nav-view>
     </ion-side-menu-content>
 
-    <ion-side-menu side="left">
+    <ion-side-menu side="left" expose-aside-when="large">
         <ion-header-bar class="bar-assertive">
             <h1 class="title">Left Menu</h1>
         </ion-header-bar>
