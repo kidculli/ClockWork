@@ -8,7 +8,7 @@
  */
 
 angular
-    .module('ClockWork').controller('EventDetailCtrl', function ($scope,$reactive,$stateParams,myUtilities) {
+    .module('ClockWork').controller('EventDetailCtrl', function ($scope,$reactive,$stateParams) {
         // attach scope to this object
         $reactive(this).attach($scope);
 
