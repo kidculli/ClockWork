@@ -12,8 +12,8 @@
         - Updated Title
         - Removed 1 cap as option
 
-     3/05/16 Son Nguyen
-        - Added form validation
+     3/07/16 Son Nguyen
+        - Added cleaner and custom form validation
 -->
 <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-dark">
@@ -22,21 +22,21 @@
     </ion-header-bar>
     <ion-content class="padding">
         <div class="list" ng-controller="addEventCtrl as addEvent">
-            <form class="list" name="eventForm"  >
+            <form class="list" name="eventForm" novalidate>
 
                 <label class="item item-input text">
                     <input type="text" placeholder="Name of Event" name="eventName" ng-model="addEvent.newEvent.title" required>
                 </label>
-                <span style="color:red" ng-show="eventForm.eventName.$pristine && eventForm.eventName.$invalid || eventForm.eventName.$dirty && eventForm.eventName.$invalid">
-                        <span ng-show="eventForm.eventName.$pristine && eventForm.eventName.$invalid || eventForm.eventName.$dirty && eventForm.eventName.$invalid">Event name is required.</span>
-                </span>
+                <div style="color:red" ng-show="addEvent.checkName() || eventForm.$submitted || eventForm.eventName.$touched">
+                    <div ng-show="eventForm.eventName.$error.required">Event name require.</div>
+                </div>
 
                 <label class="item item-input text">
-                    <textarea placeholder="Description" ng-model="addEvent.newEvent.description" name="eventDetail" required></textarea>
+                    <textarea type="text" placeholder="Description" name="eventDetail" ng-model="addEvent.newEvent.description" required></textarea>
                 </label>
-                <span style="color:red" ng-show="eventForm.eventDetail.$pristine && eventForm.eventDetail.$invalid || eventForm.eventDetail.$dirty && eventForm.eventDetail.$invalid">
-                        <span ng-show="eventForm.eventDetail.$pristine && eventForm.eventDetail.$invalid || eventForm.eventDetail.$dirty && eventForm.eventDetail.$invalid">Event detail is required.</span>
-                </span>
+                <div style="color:red" ng-show="addEvent.checkDescription() || eventForm.$submitted || eventForm.eventDetail.$touched">
+                    <div ng-show="eventForm.eventDetail.$error.required">Event description require.</div>
+                </div>
 
                 <label class="item item-input item-select">
                     <div class="input-label">
@@ -51,9 +51,9 @@
                         <option>Outdoors</option>
                     </select>
                 </label>
-                 <span style="color:red" ng-show="eventForm.eventType.$pristine && eventForm.eventType.$invalid || eventForm.eventType.$dirty && eventForm.eventType.$invalid">
-                        <span ng-show="eventForm.eventType.$pristine && eventForm.eventType.$invalid || eventForm.eventType.$dirty && eventForm.eventType.$invalid">Event type is required.</span>
-                </span>
+                <div style="color:red" ng-show="addEvent.checkType() || eventForm.$submitted || eventForm.eventType.$touched">
+                    <div ng-show="eventForm.eventType.$error.required">Event type require.</div>
+                </div>
 
                 <div class="list">
                     <label class="item item-input item-select">
@@ -74,19 +74,23 @@
                         </select>
                     </label>
                 </div>
-                <span style="color:red" ng-show="eventForm.eventCapacity.$pristine && eventForm.eventCapacity.$invalid || eventForm.eventCapacity.$dirty && eventForm.eventCapacity.$invalid">
-                        <span ng-show="eventForm.eventCapacity.$pristine && eventForm.eventCapacity.$invalid || eventForm.eventCapacity.$dirty && eventForm.eventCapacity.$invalid">Event capacity is required.</span>
-                </span>
+                <div style="color:red" ng-show="addEvent.checkCapacity() || eventForm.$submitted || eventForm.eventCapacity.$touched">
+                    <div ng-show="eventForm.eventCapacity.$error.required ">Event capacity require.</div>
+                </div>
 
-
-                <ionic-timepicker input-obj="addEvent.timePickerObject">
-                    <button class="button button-dark button-block">
+                <ionic-timepicker input-obj="addEvent.timePickerObject" name="eventTime" required>
+                    <button type="button" class="button button-dark button-block">
                         <standard-time-meridian etime='addEvent.timePickerObject.inputEpochTime'>Pick Time</standard-time-meridian>
                     </button>
                 </ionic-timepicker>
-                <span style="color:red" ng-show="addEvent.isTime()">Please select time</span>
+                <span style="color:red" ng-show="addEvent.checkTime()">Please select time</span>
 
-                <button type="submit" class="button button-dark button-block " ng-click="addEvent.timeReset() && addEvent.addEvent(eventForm.$valid);">Confirm Event and Post</button>
+                <button type="button" class="button button-dark button-block " ng-click="addEvent.addEvent(eventForm.$valid,
+                                                                                                           eventForm, addEvent.newEvent.title,
+                                                                                                           addEvent.newEvent.description,
+                                                                                                           addEvent.newEvent.event_type,
+                                                                                                           addEvent.newEvent.cap );">Confirm Event and Post</button>
+
             </form>
         </div>
     </ion-content>
