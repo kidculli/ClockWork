@@ -25,3 +25,5 @@ mquandalle:bower
 flyandi:reactive-countdown
 accounts-password
 dotansimha:accounts-ui-angular
+fourseven:scss
+meteoric:ionic-sass

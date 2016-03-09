@@ -29,7 +29,15 @@
     </ion-nav-buttons>
 
     <ion-content>
-        <ion-list ng-repeat="event in EventFeed.events">
+
+        <ion-list>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="searchBox">
+            </label>
+        </ion-list>
+
+        <ion-list ng-repeat="event in EventFeed.events | filter: searchBox">
             <ion-item href="#/tab/event-detail/{{event._id}}">
                 <div class="row">
                     <div class="col col-10">
