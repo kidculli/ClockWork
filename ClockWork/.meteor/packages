@@ -27,3 +27,4 @@ accounts-password
 dotansimha:accounts-ui-angular
 fourseven:scss
 meteoric:ionic-sass
+angular:angular-messages

@@ -9,6 +9,9 @@
  *
  *  -3/05/16 Son Nguyen
  *      -changed all the sub-views to even-tab. Using side bar menu.
+ *
+ *  3/14/16 C Lam
+ *      -added signin and register routes
  */
 angular
     .module('ClockWork')
@@ -16,12 +19,24 @@ angular
 
 function config($stateProvider, $urlRouterProvider) {
     $stateProvider
+        .state('signup', {
+            url: '/register',
+            templateUrl: 'client/account-signup/signup.html',
+            controller: 'signupCtrl',
+            controllerAs: 'SignUp'
+        })
+        .state('signin', {
+            url: '/signin',
+            templateUrl: 'client/login/login.html',
+            controller: 'loginCtrl',
+        })
         .state('tabs', {
             url: "/tab",
             abstract: true,
             templateUrl: "client/tab/tab.html"
         })
         .state('tabs.event-feed', {
+            //cache:false,
             url: "/event-feed",
             views: {
                 'event-tab': {
@@ -75,5 +90,7 @@ function config($stateProvider, $urlRouterProvider) {
         });
 
 
-    $urlRouterProvider.otherwise('tab/event-feed');
+    //$urlRouterProvider.otherwise('tab/event-feed');
+    $urlRouterProvider.otherwise('signin');
+    //$urlRouterProvider.otherwise('/register');
 }

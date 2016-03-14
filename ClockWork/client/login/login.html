@@ -1,0 +1,79 @@
+<!--
+Author: Cullin Lam
+CreatedOn: 3/13/16
+file: login.html
+
+This file implements login view of our application.
+
+3/13/16
+    Clam
+        -removed view caching for this view
+
+        notes
+            -does live validation for username and password fields
+            -on sigin click if error is returned , message is displayed
+-->
+
+
+<ion-view view-title="Sign-In" cache-view="false">
+    <ion-content scroll="false">
+        <!--<login-buttons></login-buttons>-->
+        <form name="signinForm" novalidate="" ng-submit="loginCtrl(signinForm)">
+
+            <div class="list">
+                <label class="item item-input"
+                       ng-class="{ 'has-error' : signinForm.username.$invalid && signinForm.username.$dirty, 'valid-lr' : signinForm.username.$valid}">
+                    <span class="input-label">Username or Email</span>
+                    <input type="text"
+                           name="username"
+                           ng-model="user.username"
+                           ng-minlength="5"
+                           ng-maxlength="25"
+                           required>
+                </label>
+
+                <div class="form-errors" ng-messages="signinForm.username.$error" ng-show="signinForm.username.$dirty">
+                    <div class="form-error" ng-message="required">This field is required</div>
+                    <div class="form-error" ng-message="minlength">This field must be greater than 5 characters</div>
+                    <div class="form-error" ng-message="maxlength">This field must be less than 25 characters</div>
+                </div>
+
+                <label class="item item-input"
+                       ng-class="{ 'has-error' : signinForm.password.$invalid && signinForm.password.$dirty, 'valid-lr' : signinForm.password.$valid}">
+                       <!--ng-class="{ 'has-error-lr' : signinForm.password.$invalid  && signinForm.$submitted, 'valid-lr' : signinForm.password.$valid  && signinForm.$submitted}">-->
+                    <span class="input-label">Password</span>
+                    <input type="password"
+                           name="password"
+                           ng-model="user.password"
+                           ng-minlength="5"
+                           ng-maxlength="25"
+                           required>
+                </label>
+                <!--ng-show="signinForm.password.$error && signinForm.$submitted"-->
+                <div class="form-errors" ng-messages="signinForm.password.$error" ng-show="signinForm.password.$dirty">
+                     <div class="form-error" ng-message="required">Please enter a value for this field.</div>
+                    <div class="form-error" ng-message="minlength">This field must be greater than 5 characters</div>
+                    <div class="form-error" ng-message="maxlength">This field must be less than 25 characters</div>
+                </div>
+            </div>
+            <div class="form-error" ng-show="loginError.username_err" ng-hide="loginError.username_err==false">Invalid Username </div>
+            <div class="form-error" ng-show="loginError.pass_err" ng-hide="loginError.pass_err==false">Invalid Password </div>
+            <!--<div class="form-errors" ng-messages="loginCtrl.loginError">-->
+                <!--<div class="form-error" ng-message="pass_err">Login Error</div>-->
+                <!--</div>-->
+                <!--<div class="form-error" ng-message="minlength">This field must be greater than 5 characters</div>-->
+            <div class="padding">
+                <button ng-click="signin(user)" class="button button-block button-positive">
+                    Sign-In
+                </button>
+                <p class="text-center">
+                    <a href="#/register">New User? Sign Up</a>
+                </p>
+                <p class="text-center">
+                    <a href="#/forgot-password">Forgot password</a>
+                </p>
+            </div>
+
+        </form>
+    </ion-content>
+</ion-view>

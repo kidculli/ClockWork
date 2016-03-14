@@ -4,10 +4,15 @@
  *
  * This file  creates and initializes our angular app with the required dependencies
  * and bootstraps the page.
+ *
+ *
+ *  3/13/16
+ *      Clam
+ *          -added ngMessages dependency for login page
  */
 
 //list of angular module dependencies
-const modulesToLoad = ['angular-meteor','ui.router','ionic','ionic-timepicker','accounts.ui'];
+const modulesToLoad = ['angular-meteor','ui.router','ionic','ionic-timepicker','accounts.ui','ngMessages'];
 
 // bootstrap the page
 function onReady() {

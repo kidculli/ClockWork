@@ -32,6 +32,9 @@ angular
             $scope.modal = modal;
         });
 
+        //wrap modal open in a controller call here
+
+
 
         this.removeEvent = function(event){
             Events.remove({_id: event._id});

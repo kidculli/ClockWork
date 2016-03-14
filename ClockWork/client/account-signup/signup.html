@@ -1,0 +1,88 @@
+<!--
+Author: Cullin Lam
+createdOn: 3/14/16
+file:signup.html
+
+sign up for account view
+-->
+
+<ion-view view-title="Sign Up" cache-view="false">
+    <ion-content scroll="false">
+        <form name="signinForm" novalidate="">
+
+            <div class="list">
+                <label class="item item-input"
+                       ng-class="{ 'has-error' : signinForm.firstname.$invalid && signinForm.firstname.$dirty, 'valid-lr' : signinForm.firstname.$valid}">
+                    <span class="input-label">First Name</span>
+                    <input type="text"
+                           name="firstname"
+                           ng-model="new_user.firstname"
+                           required>
+                </label>
+                <label class="item item-input"
+                       ng-class="{ 'has-error' : signinForm.lastname.$invalid && signinForm.lastname.$dirty, 'valid-lr' : signinForm.lastname.$valid}">
+                    <span class="input-label">Last Name</span>
+                    <input type="text"
+                           name="lastname"
+                           ng-model="new_user.lastname"
+                           required>
+                </label>
+
+                <label class="item item-input"
+                       ng-class="{ 'has-error' : signinForm.email.$invalid && signinForm.email.$dirty, 'valid-lr' : signinForm.email.$valid}">
+                    <span class="input-label">Email</span>
+                    <input type="email"
+                           name="email"
+                           ng-model="new_user.email"
+                           required>
+                </label>
+
+                <label class="item item-input"
+                       ng-class="{ 'has-error' : signinForm.username.$invalid && signinForm.username.$dirty, 'valid-lr' : signinForm.username.$valid}">
+                    <span class="input-label">Username</span>
+                    <input type="text"
+                           name="username"
+                           ng-model="new_user.username"
+                           ng-minlength="5"
+                           ng-maxlength="20"
+                           required>
+                </label>
+
+
+                <div class="form-errors" ng-messages="signinForm.username.$error" ng-show="signinForm.username.$dirty">
+                    <div class="form-error" ng-message="required">This field is required</div>
+                    <div class="form-error" ng-message="minlength">This field must be greater than 5 characters</div>
+                    <div class="form-error" ng-message="maxlength">This field must be less than 20 characters</div>
+                </div>
+
+                <label class="item item-input"
+                       ng-class="{ 'has-error' : signinForm.password.$invalid && signinForm.password.$dirty, 'valid-lr' : signinForm.password.$valid}">
+                    <!--ng-class="{ 'has-error-lr' : signinForm.password.$invalid  && signinForm.$submitted, 'valid-lr' : signinForm.password.$valid  && signinForm.$submitted}">-->
+                    <span class="input-label">Password</span>
+                    <input type="password"
+                           name="password"
+                           ng-model="new_user.password"
+                           ng-minlength="5"
+                           ng-maxlength="25"
+                           required>
+                </label>
+                <!--ng-show="signinForm.password.$error && signinForm.$submitted"-->
+                <div class="form-errors" ng-messages="signinForm.password.$error" ng-show="signinForm.password.$dirty">
+                    <div class="form-error" ng-message="required">Please enter a value for this field.</div>
+                    <div class="form-error" ng-message="minlength">This field must be greater than 5 characters</div>
+                    <div class="form-error" ng-message="maxlength">This field must be less than 25 characters</div>
+                </div>
+            </div>
+
+            <div class="form-error" ng-show="registerError.username_err" ng-hide="registerError.username_err==false">Username already in use</div>
+            <div class="form-error" ng-show="registerError.email_err" ng-hide="registerError.email_err==false">Email already in use</div>
+
+            <div class="padding">
+                <button ng-click="SignUp.register(new_user)" class="button button-block button-positive">
+                    Sign Up
+                </button>
+            </div>
+
+        </form>
+    </ion-content>
+</ion-view>
