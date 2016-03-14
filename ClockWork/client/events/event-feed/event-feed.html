@@ -16,6 +16,9 @@
     2/27/2016 C Lam
         -Added use of countdown-timer directive
 
+    3/14/16 C Lam
+        -Added use of ion icon filter to event type
+
 
 -->
 
@@ -41,7 +44,7 @@
             <ion-item href="#/tab/event-detail/{{event._id}}">
                 <div class="row">
                     <div class="col col-10">
-                        <i class="icon icon-left ion-social-dribbble-outline" style="font-size: xx-large"></i>
+                        <i class="icon icon-left {{event.event_type | icon}}" style="font-size: xx-large"></i>
                     </div>
                     <div class="col col-33">
                         <h2>{{event.title}}</h2>

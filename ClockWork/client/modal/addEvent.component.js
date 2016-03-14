@@ -119,6 +119,8 @@ angular
             this.newEvent['loc'] = {};
             // add expired field
             this.newEvent['expired'] = false;
+            //add event type
+            this.newEvent['event_type'] = event_type;
             Events.insert(this.newEvent);
             console.log("Added Event:", this.newEvent);
             //reset selected time to 0

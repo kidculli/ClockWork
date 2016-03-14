@@ -11,6 +11,8 @@
         - Removed 1 cap as option
      3/07/16 Son Nguyen
         - Added cleaner and custom form validation
+     3/14/16 C LAM
+        - Added more options
 -->
 <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-dark">
@@ -46,6 +48,12 @@
                         <option>Music</option>
                         <option>Personal Care</option>
                         <option>Outdoors</option>
+                        <option>Movie</option>
+                        <option>Game</option>
+                        <option>Sport</option>
+                        <option>Shopping</option>
+                        <option>Drinking/Partying</option>
+                        <option>Other</option>
                     </select>
                 </label>
                 <div style="color:red" ng-show="addEvent.checkType() || eventForm.$submitted || eventForm.eventType.$touched">
