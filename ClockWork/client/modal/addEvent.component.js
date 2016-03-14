@@ -17,6 +17,9 @@
  *      -Note: Added custom validation because of using directive for picking time. Because of this,
  *             Angular's type="submit" button will not work and clear the form after submission on the modal.
  *             Therefore, using type="button" is a better solution to reset form.
+ *
+ *   -3/14/16 C Lam
+ *      -Added Meteor User username to event create record
  */
 angular
     .module('ClockWork').controller('addEventCtrl', function($scope, $reactive) {
@@ -109,8 +112,7 @@ angular
             this.newEvent['time_expire'] = expire_time;
             // initialize current fill of event to 1
             this.newEvent['fill'] = 1;
-            // hardcode user id, it will be changed to Meteor.UserId() when sign in implemented
-            this.newEvent['owner'] = 'ClockWorkMaster';
+            this.newEvent['owner'] = Meteor.user().username;
             // add empty array for attendees
             this.newEvent['attendees'] = [];
             // add empty object for loc

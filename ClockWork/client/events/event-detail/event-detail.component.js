@@ -14,10 +14,7 @@ angular
 
         var event_id = $stateParams.eventId;
         console.log(event_id);
-        //hardcode user's name until we get the User collections up
-        this.name = "ClockWork Master";
         this.event = Events.findOne({'_id':event_id});
-
         // set if we should display number of spots remaining i.e if 10+ we shouldnt
         if (typeof(this.event.cap) == 'string'){
             this.hide = true;
