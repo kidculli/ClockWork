@@ -87,7 +87,20 @@ function config($stateProvider, $urlRouterProvider) {
                     templateUrl: "client/templates/contact.html"
                 }
             }
-        });
+        })
+
+        .state('tabs.friends-list', {
+            //cache:false,
+            url: "/friends",
+            views: {
+                'event-tab': {
+                    templateUrl: "client/friends/friends-list.html",
+                    controller: 'FriendsCtrl',
+                    controllerAs: 'Friends'
+                }
+            }
+        })
+
 
 
     //$urlRouterProvider.otherwise('tab/event-feed');
