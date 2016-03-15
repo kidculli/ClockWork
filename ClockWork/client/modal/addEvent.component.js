@@ -143,6 +143,7 @@ angular
 
         }
         else{
+            /* This will trigger all ng-show if all the fields are missing in the form and modal wont disappear*/
             check_time = true;
             check_name = true;
             check_description = true;
