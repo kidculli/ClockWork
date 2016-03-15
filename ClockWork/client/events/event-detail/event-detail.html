@@ -25,30 +25,48 @@
     -3/5/16
         -CLam
             -updated view-title
+
+    -3/11/16
+        -Andry Lora
+        -centered text,card list to seperate elements
+        -look into sass, h2 and lower all seem to look the same and when h1 is used it is way to
+        large
 -->
 
 <ion-view view-title="Detail">
     <ion-content class="padding">
-        <div class="card" style="padding-left: 50px"><div>
-            <p>{{EventDetail.event.owner}}</p>
-        </div>
-            <div>
-                <span>{{EventDetail.event.event_type}}</span>
-                <h2>{{EventDetail.event.title}}</h2>
 
-                <h3>{{EventDetail.event.time_expire | date:"short"}}</h3>
-                <countdown-timer></countdown-timer>
+        <div class="list card">
 
-                <p>{{EventDetail.event.description}}</p>
+            <div class="item Host">
+                <h2 style="text-align: center;">Host:{{EventDetail.event.owner}}</h2>
             </div>
-            <div>
-                <h2 ng-hide="EventDetail.hide">{{EventDetail.event.cap - EventDetail.event.fill}} spots remaining!</h2>
+
+            <div class="item item-body">
+                <h2 style="text-align: center;">{{EventDetail.event.title}}</h2>
+                <h2 style="text-align: center;">{{EventDetail.event.event_type}}</h2>
+
             </div>
+
+            <div class="item item-body">
+                <h2 style="text-align: center;">{{EventDetail.event.time_expire | date:"short"}}</h2>
+                <h2 style="text-align: center;"><countdown-timer></countdown-timer></h2>
+
+                <h2 style="text-align: center;">{{EventDetail.event.description}}</h2>
+
+            </div>
+
         </div>
-        <ion-checkbox>Attending</ion-checkbox>
-        <ion-list></ion-list>
+
+
+
+        <button class="button button-block button-positive">
+            <h3 ng-hide="EventDetail.hide"> Attending? {{EventDetail.event.cap - EventDetail.event.fill}} spots remaining!</h3>
+        </button>
+       <!-- Leave out location until impelemnted
         <div>
             <p>{{EventDetail.event.loc}}</p>
         </div>
+        -->
     </ion-content>
 </ion-view>
