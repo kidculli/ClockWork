@@ -10,6 +10,9 @@
  *  -2/25/16
  *      -added expire field boolean
  *
+ *  -3/15/16 C Lam
+ *      -added full and canceled fields to record
+ *
  */
 if (Meteor.isServer) {
     Meteor.startup(function () {
@@ -26,6 +29,8 @@ if (Meteor.isServer) {
                     fill:2,
                     event_type: "Concert",
                     expired: false,
+                    full: false,
+                    canceled:false,
                     loc: {
                         address: "Atrium Rd, Wilmington MA",
                         coord: ["74", "88"]

@@ -12,7 +12,7 @@ angular.module('ClockWork').controller('loginCtrl',function($scope,$reactive,$st
     // bool properties initialized as false but will be set to true if login failed
     $scope.loginError = {username_err:false,pass_err:false};
     //sign in function ,takes an object with a username and password property
-    $scope.signin = function(user){
+    this.signin = function(user){
         console.log(user);
         console.log(this);
         //Call Meteor API to login
@@ -22,10 +22,11 @@ angular.module('ClockWork').controller('loginCtrl',function($scope,$reactive,$st
             if(typeof(result) === "undefined")
             {
                 console.log("Successfully logged in");
+                //$state.go('tabs.about',{},{inherit:true,notify:true,reload:false});
                 $state.go('tabs.event-feed',{},{inherit:true,notify:true,reload:false});
                 //navigating directly to event feed causes items in feed to disappear
                 //currently set the destination to the about tab until I can fix.
-                $state.go('tabs.about',{},{inherit:true,notify:true,reload:false});
+
             }
             //error case
             else{

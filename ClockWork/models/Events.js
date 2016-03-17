@@ -6,4 +6,5 @@
  *  - 2/24/16 C Lam
  *      Changed ClockWork global var to Events var to avoid confusion
  */
-Events = new Mongo.Collection("Events");
+Events = new Mongo.Collection("Events")
+

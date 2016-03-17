@@ -9,8 +9,8 @@
         - Added more options
         - Updated Title
         - Removed 1 cap as option
-     3/15/16 Son Nguyen
-        - Added ng-class from Cullin to make validation look prettier.
+     3/07/16 Son Nguyen
+        - Added cleaner and custom form validation
      3/14/16 C LAM
         - Added more options
 -->
@@ -23,18 +23,14 @@
         <div class="list" ng-controller="addEventCtrl as addEvent">
             <form class="list" name="eventForm" novalidate>
 
-                <label class="item item-input text"
-                       ng-class="{'has-error': addEvent.checkName() || eventForm.$submitted || eventForm.eventName.$touched,
-                                  'valid-lr': eventForm.eventName.$valid}">
+                <label class="item item-input text">
                     <input type="text" placeholder="Name of Event" name="eventName" ng-model="addEvent.newEvent.title" required>
                 </label>
                 <div style="color:red" ng-show="addEvent.checkName() || eventForm.$submitted || eventForm.eventName.$touched">
                     <div ng-show="eventForm.eventName.$error.required">Event name require.</div>
                 </div>
 
-                <label class="item item-input text"
-                       ng-class="{'has-error': addEvent.checkName() || eventForm.$submitted || eventForm.eventDetail.$touched,
-                                  'valid-lr': eventForm.eventDetail.$valid}">
+                <label class="item item-input text">
                     <textarea type="text" placeholder="Description" name="eventDetail" ng-model="addEvent.newEvent.description" required></textarea>
                 </label>
                 <div style="color:red" ng-show="addEvent.checkDescription() || eventForm.$submitted || eventForm.eventDetail.$touched">
