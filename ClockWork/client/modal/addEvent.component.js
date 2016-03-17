@@ -20,8 +20,6 @@
  *
  *   -3/14/16 C Lam
  *      -Added Meteor User username to event create record
- *   -3/15/16 C Lam
- *      - added full and canceled fields
  */
 angular
     .module('ClockWork').controller('addEventCtrl', function($scope, $reactive) {
@@ -123,8 +121,6 @@ angular
             this.newEvent['expired'] = false;
             //add event type
             this.newEvent['event_type'] = event_type;
-            this.newEvent['full'] = false;
-            this.newEvent['canceled'] = false;
             Events.insert(this.newEvent);
             console.log("Added Event:", this.newEvent);
             //reset selected time to 0
@@ -147,6 +143,7 @@ angular
 
         }
         else{
+            /* This will trigger all ng-show if all the fields are missing in the form and modal wont disappear*/
             check_time = true;
             check_name = true;
             check_description = true;
