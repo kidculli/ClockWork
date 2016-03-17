@@ -121,6 +121,10 @@ angular
             this.newEvent['expired'] = false;
             //add event type
             this.newEvent['event_type'] = event_type;
+            //add full status
+            this.newEvent['full'] = false;
+            //add canceled status
+            this.newEvent['canceled'] = false;
             Events.insert(this.newEvent);
             console.log("Added Event:", this.newEvent);
             //reset selected time to 0
