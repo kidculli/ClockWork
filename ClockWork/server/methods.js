@@ -84,7 +84,6 @@ Meteor.methods({
                 result = Meteor.call("Update", "Events", {
                     query: {_id: event._id, full: false},
                     update: {
-                        $set: {full: true},
                         $push: {attendees: username},
                         $inc: {fill: 1}
                     },
