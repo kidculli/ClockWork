@@ -18,10 +18,50 @@ angular
 
         var event_id = $stateParams.eventId;
         console.log(event_id);
-        //this.event = Events.findOne({'_id': event_id});
-        this.helpers({event:function(){return Events.findOne({_id:event_id})}});
-        console.log(this.event);
+        this.helpers(
+            {
+                event:function() {
+                    return Events.findOne({_id:event_id})
+                }
+            }
+        );
 
+        // update scope vars whenever database changes
+        this.autorun(function(){
+            if(this.event.owner == Meteor.user().username) {
+                this.hide_attend = true;
+                this.hide_leave = true;
+                return;
+            }
+            // if user is attending hide attend button, show leave button
+            if (this.event.attendees.indexOf(Meteor.user().username) > -1) {
+                this.hide_attend = true;
+                this.hide_leave = false;
+            }
+            // show attend button, hide leave button
+            else {
+                this.hide_attend = false;
+                this.hide_leave = true;
+            }
+            console.log("autorun init");
+            console.log(this.hide_attend);
+            console.log(this.hide_leave);
+        });
+        console.log(this.event);
+        // set hide_leave to be true on init
+        //this.hide_leave = true;
+        //// if user is owner hide attend button
+        //if(event.owner == Meteor.user().username) {
+        //    this.hide_attend = true;
+        //}
+        //// if user is attending hide attend button
+        //if (this.event.attendees.indexOf(Meteor.user().username) > -1) {
+        //    this.hide_attend = true;
+        //}
+        ////  do not hide leave button
+        //else {
+        //    this.hide_leave = false;
+        //}
         //set if we should display number of spots remaining i.e if 10+ we shouldn't
         if (typeof(this.event.cap) == 'string') {
             this.hide = true;
@@ -109,11 +149,13 @@ angular
         };
         //Meteor.call("Update","Events",{query:{_id:"oZW8TJNqxKDTmuerp",full:false},update:{$set:{attendees:['Drake','Future','Weezy']},$inc:{fill:1}},options:{upsert:false}},false);
         this.attend = function () {
-            var cap = this.event.cap -1;
             if (Meteor.user()) {
                 // check if user is already attending
                 if (this.event.attendees.indexOf(Meteor.user().username) == -1)
                 {
+                    // set hiding
+                    this.hide_attend = true;
+                    this.hide_leave = false;
                     // Might need to implement stub call on client
                     Meteor.call("Attend",this.event,Meteor.user().username);
 
@@ -128,5 +170,4 @@ angular
 
         }
     });
-
 
