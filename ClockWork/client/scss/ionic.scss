@@ -1,0 +1,191 @@
+/*
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #4a87ee !default;
+$calm:                            #43cee6 !default;
+$balanced:                        #66cc33 !default;
+$energized:                       #f0b840 !default;
+$assertive:                       #ef4e3a !default;
+$royal:                           #8a6de9 !default;
+$dark:                            #444 !default;
+*/
+$test-image: "images/134.png";
+$blue: #054357;
+$dark: #cd2027;
+$orange: #fc5a22;
+
+ion-nav-view.view-container .pane{
+
+  background-color: $blue;
+  color: white;
+
+  h3{
+    color: white;
+  }
+
+  // This is for search bar
+  ion-list {
+    .list .item {
+      background-color: $blue;
+
+      .icon{
+        color: white;
+      }
+
+      input{
+        color:white;
+      }
+
+      input::-webkit-input-placeholder {
+        color: white;
+      }
+    }
+    .list .item:hover{
+      background-color: $orange;
+    }
+  }
+
+  // This is for event-feed list item
+  ion-list{
+    ion-item.item-complex .item-content{
+      background-color: $blue;
+      color: white;
+
+      h2.ng-binding{
+        color:white;
+      }
+
+      h3.ng-binding{
+        color:white;
+      }
+    }
+    ion-item.item-complex .item-content:hover{
+      background-color: $orange;
+    }
+
+  }
+}
+
+//Side Navigation
+ion-side-menu{
+  ion-content{
+    background-color: $blue;
+
+    .list .item{
+      background-color: $blue;
+    }
+
+    .list .item:hover{
+      background-color: $orange;
+    }
+  }
+}
+
+
+// Double check on this for the drop down.
+ion-modal-view{
+  ion-content{
+    background-color: $blue;
+    form {
+      label.item-input {
+        background-color: $blue;
+        background-color: $blue;
+
+        //Make all the text in the modal with <div/> tag into white color;
+        div{
+          color:white;
+        }
+
+        input{
+          color:white;
+        }
+        input::-webkit-input-placeholder {
+          color: white;
+        }
+
+        textarea{
+          background-color: $blue;
+          color:white;
+        }
+        textarea::-webkit-input-placeholder {
+          color: white;
+        }
+
+        select{
+          background-color: $blue;
+          color:white;
+        }
+      }
+      label.item-input:hover{
+        background-color:$orange;
+        textarea:hover{
+          background-color:$orange;
+        }
+        select:hover{
+          background-color:$orange;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+@charset "UTF-8";
+
+  @import
+    // Ionicons
+  "ionicons/ionicons.scss",
+
+    // Variables
+  "mixins",
+  "variables",
+
+    // Base
+  "reset",
+  "scaffolding",
+  "type",
+
+    // Components
+  "action-sheet",
+  "backdrop",
+  "bar",
+  "tabs",
+  "menu",
+  "modal",
+  "popover",
+  "popup",
+  "loading",
+  "items",
+  "list",
+  "badge",
+  "slide-box",
+  "slides",
+  "refresher",
+  "spinner",
+
+    // Forms
+  "form",
+  "checkbox",
+  "toggle",
+  "radio",
+  "range",
+  "select",
+  "progress",
+
+    // Buttons
+  "button",
+  "button-bar",
+
+    // Util
+  "grid",
+  "util",
+  "platform",
+
+    // Animations
+  "animations",
+  "transitions";
+
