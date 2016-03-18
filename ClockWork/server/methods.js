@@ -9,9 +9,13 @@
  * allows more complex queries to be written as well and called from client
  *
  * ref: http://meteortips.com/first-meteor-tutorial/methods/
+ *
+ * 3/18/16
+ *      -Added leave method
+ *
  */
 
-//var util = require(util);
+
 
 
 Meteor.methods({
@@ -103,6 +107,27 @@ Meteor.methods({
         }
         else {
             console.log(username + " already attending " + event.title);
+        }
+    },
+
+    "Leave": function(event, username) {
+        if (event.attendees.indexOf(username) > -1) {
+            var result = Meteor.call("Update", "Events",{
+               query: {_id: event._id},
+                update: {
+                    $pull: {attendees:username},
+                    $inc: {fill:-1}
+                },
+                options: {
+                    upsert:false
+                }
+            });
+        }
+        if(result) {
+            console.log(username + " is no longer attending event: " + event._id);
+        }
+        else{
+            console.log("No changes made " +username + " was not attending event: "+ event._id);
         }
     }
 

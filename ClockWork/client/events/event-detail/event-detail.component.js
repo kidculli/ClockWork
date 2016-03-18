@@ -9,6 +9,9 @@
  3.17.16 C Lam
     - made view reactive using helper
     - got attend to work
+
+ 3/18/16 C Lam
+    - added leave function call
  */
 
 angular
@@ -105,48 +108,48 @@ angular
 
         //Events.update({_id: "F7zsxh2Mmdg46zo7S", full: false}, {$inc: {fill: 1}, $set: {attendees: ["cullin"]}});
 
-        function test_call(error,result){
-            console.log(result);
-        }
-
-        function call_back2(error,result){
-            console.log("In call back 2");
-            if (result.reason == "unmatched") {
-                console.log("Update failed the event is full " + result.full_result);
-            }
-            else if (result.success) {
-                console.log(Meteor.user().username + "is now attending" + this.event.title);
-            }
-            else {
-                console.log("Error occurred while updating collection: " + result.full_result + error);
-            }
-        }
-
-        function call_back(error,result){
-            console.log("In call back 1");
-            console.log(error);
-            console.log(result);
-            if (result.reason == "unmatched") {
-                Meteor.call("Update", "Events", {
-                    query: {_id: event_id, full: false},
-                    update: {
-                        $push: {attendees: Meteor.user().username},
-                        $inc: {fill: 1}
-                    },
-                    options: {
-                        upsert: false
-                    }
-
-                }, true,call_back2);
-            }
-
-            else if (result.success) {
-                console.log(Meteor.user().username + "is now attending" + this.event.title);
-            }
-            else {
-                console.log("Error occurred while updating collection: " + result.full_result + error);
-            }
-        };
+        //function test_call(error,result){
+        //    console.log(result);
+        //}
+        //
+        //function call_back2(error,result){
+        //    console.log("In call back 2");
+        //    if (result.reason == "unmatched") {
+        //        console.log("Update failed the event is full " + result.full_result);
+        //    }
+        //    else if (result.success) {
+        //        console.log(Meteor.user().username + "is now attending" + this.event.title);
+        //    }
+        //    else {
+        //        console.log("Error occurred while updating collection: " + result.full_result + error);
+        //    }
+        //}
+        //
+        //function call_back(error,result){
+        //    console.log("In call back 1");
+        //    console.log(error);
+        //    console.log(result);
+        //    if (result.reason == "unmatched") {
+        //        Meteor.call("Update", "Events", {
+        //            query: {_id: event_id, full: false},
+        //            update: {
+        //                $push: {attendees: Meteor.user().username},
+        //                $inc: {fill: 1}
+        //            },
+        //            options: {
+        //                upsert: false
+        //            }
+        //
+        //        }, true,call_back2);
+        //    }
+        //
+        //    else if (result.success) {
+        //        console.log(Meteor.user().username + "is now attending" + this.event.title);
+        //    }
+        //    else {
+        //        console.log("Error occurred while updating collection: " + result.full_result + error);
+        //    }
+        //};
         //Meteor.call("Update","Events",{query:{_id:"oZW8TJNqxKDTmuerp",full:false},update:{$set:{attendees:['Drake','Future','Weezy']},$inc:{fill:1}},options:{upsert:false}},false);
         this.attend = function () {
             if (Meteor.user()) {
@@ -168,6 +171,27 @@ angular
                 console.log("User not logged in ");
             }
 
+        }
+
+        this.leave = function () {
+            if (Meteor.user()) {
+                // check if user is already attending
+                if (this.event.attendees.indexOf(Meteor.user().username) > -1)
+                {
+                    // set hiding
+                    this.hide_attend = false;
+                    this.hide_leave = true;
+                    // Might need to implement stub call on client
+                    Meteor.call("Leave",this.event,Meteor.user().username);
+
+                }
+                else {
+                    console.log(Meteor.user().username + "already not attending");
+                }
+            }
+            else {
+                console.log("User not logged in ");
+            }
         }
     });
 
