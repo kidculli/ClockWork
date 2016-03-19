@@ -8,17 +8,19 @@
  * 2/28/16
  *  -CLAM
  *      -added expired filter to events helper function
+ * 3/19/16
+ *  -CLAM
+ *      -cleaned up documentation and console logs
  */
 angular
     .module('ClockWork').controller('EventFeedCtrl',function($scope, $meteor, $reactive, $ionicModal) {
-
+        console.log("Running Event Feed Ctrl");
         //uses 'this' instead of '$scope' because of controllerAs.
         $reactive(this).attach($scope);
 
-        //declaring empty eventS
+        //declaring new empty event for add event modal
         this.newEvent = {};
 
-        //this.events = $meteor.collection(ClockWork);
         this.helpers({
             events: function(){
                 return Events.find({expired:false});
@@ -31,10 +33,6 @@ angular
         }).then(function(modal) {
             $scope.modal = modal;
         });
-
-        //wrap modal open in a controller call here
-
-
 
         this.removeEvent = function(event){
             Events.remove({_id: event._id});

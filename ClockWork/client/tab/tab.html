@@ -14,6 +14,9 @@ navigation to different views
     -CLAM
         -added logout call to sidemenu currently uses onlick to do so, may move to controller
 
+3/19/166
+    -added controller to control logout function
+
 -->
 <ion-side-menus enable-menu-with-back-views="false">
 
@@ -41,7 +44,7 @@ navigation to different views
                 <a href="#/tab/event-feed" class="item" menu-close>Home</a>
                 <a href="#/tab/about" class="item" menu-close>About</a>
                 <a href="#/tab/contact" class="item" menu-close>Contact</a>
-                <a href="#/signin" onclick="Meteor.logout(function(){console.log(Meteor.user())});" class="item" menu-close>Sign Out</a>
+                <a ng-controller="logoutCtrl" ng-click="logout()" class="item" menu-close>Sign Out</a>
             </ul>
         </ion-content>
     </ion-side-menu>

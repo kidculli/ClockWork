@@ -4,24 +4,31 @@
  *
  * This file controls the login view
  *
+ * 3/19/16
+ *  - Clear cache on login view enter
+ *  - cleaned up console logs
+ *
  */
 
-angular.module('ClockWork').controller('loginCtrl',function($scope,$reactive,$stateParams,$state){
-    // attach scope to this object
+angular.module('ClockWork').controller('loginCtrl',function($scope,$reactive,$stateParams,$state,$ionicHistory){
+    //clear cache and history on logout
+    //src- https://forum.ionicframework.com/t/ionic-beta14-how-to-clean-the-cache-for-a-specific-view/14277/6
+    $scope.$on("$ionicView.enter", function(scopes, states){
+        $ionicHistory.clearHistory();
+        $ionicHistory.clearCache();
+    });
+    // attach reactive context to this object
     $reactive(this).attach($scope);
     // bool properties initialized as false but will be set to true if login failed
     $scope.loginError = {username_err:false,pass_err:false};
     //sign in function ,takes an object with a username and password property
     this.signin = function(user){
-        console.log(user);
-        console.log(this);
         //Call Meteor API to login
         Meteor.loginWithPassword(user.username,user.password,function(result){
-            console.log(result);
             //successful case
             if(typeof(result) === "undefined")
             {
-                console.log("Successfully logged in");
+                console.log("Successfully logged in user: " + Meteor.userId());
                 //$state.go('tabs.about',{},{inherit:true,notify:true,reload:false});
                 $state.go('tabs.event-feed',{},{inherit:true,notify:true,reload:false});
                 //navigating directly to event feed causes items in feed to disappear
@@ -41,7 +48,6 @@ angular.module('ClockWork').controller('loginCtrl',function($scope,$reactive,$st
                 }
             }
         });
-        console.log(Meteor.userId());
     };
 
 });
