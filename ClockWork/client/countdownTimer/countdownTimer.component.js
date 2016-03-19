@@ -12,12 +12,15 @@
  *
  *      - got countdown to work using parent controller access
  *
+ *  3/19/16
+ *      - set inline style text to be black
+ *
  */
 
 angular.module("ClockWork").directive("countdownTimer",function(){
     return {
         restrict:"E",
-        template: "<h3>{{countdownTimer.time_count| secondsToDateTime | date:'HH:mm:ss'}}</h3>",
+        template: '<h3 style="color: #111111">{{countdownTimer.time_count| secondsToDateTime | date:"HH:mm:ss"}}</h3>',
         controllerAs:"countdownTimer",
         controller: function($scope, $element ,$reactive){
             $reactive(this).attach($scope);
