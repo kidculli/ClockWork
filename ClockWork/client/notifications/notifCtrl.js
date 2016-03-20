@@ -16,7 +16,15 @@ angular.module("ClockWork").controller('notifCtrl',function($scope,$reactive) {
     this.helpers({
         notifs: function () {
             return Notifications.find({to: curr_user_id});
-        }
+        },
+        //show_badge: function () {
+        //    if(Notifications.find({to: curr_user_id}).length > 0) {
+        //        return true;
+        //    }
+        //    else {
+        //        return false;
+        //    }
+        //}
     });
 
     // function to trash Notification

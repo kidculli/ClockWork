@@ -23,7 +23,7 @@ angular
 
         this.helpers({
             events: function(){
-                return Events.find({expired:false});
+                return Events.find({expired:false,full:false});
             }
         });
 

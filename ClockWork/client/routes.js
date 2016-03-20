@@ -37,7 +37,6 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "client/tab/tab.html"
         })
         .state('tabs.event-feed', {
-            //cache:false,
             url: "/event-feed",
             views: {
                 'event-tab': {

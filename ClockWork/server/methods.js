@@ -164,11 +164,12 @@ Meteor.methods({
         if(result) {
             console.log(username + " is no longer attending event: " + event._id);
             //send notification to people still attending and owner
-            var recipients = event.attendees.splice(event.attendees.indexOf(username),1).concat[event.owner];
+            //splice the person who left
+            event.attendees.splice(event.attendees.indexOf(username),1);
             //create notif object
             Meteor.call("Notify",{
                 from:username,
-                to: recipients,
+                to: event.attendees.concat([event.owner]),
                 readby:[],
                 time_created: new Date().getTime(),
                 type:"User Left",
