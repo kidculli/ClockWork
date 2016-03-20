@@ -19,7 +19,8 @@
     3/14/16 C Lam
         -Added use of ion icon filter to event type
 
-
+    3/18/16 C Lam
+        -Added item-text-wrap to Event Title Col
 -->
 
 <ion-view view-title="Event">
@@ -46,21 +47,19 @@
                     <div class="col col-10">
                         <i class="icon icon-left {{event.event_type | icon}}" style="font-size: xx-large"></i>
                     </div>
-                    <div class="col col-33">
+                    <div class="col col-33 item-text-wrap">
                         <h2>{{event.title}}</h2>
                         <h3>{{event.owner}}</h3>
                     </div>
                     <div class="col col-33">
 
                         <i class="icon ion-android-alarm-clock" style="font-size: x-large"></i>
-                        <!--<h3>{{event.time_expire | date:"short"}}</h3>-->
                         <countdown-timer></countdown-timer>
                     </div>
                     <div class="col col-20">
                         <i class="icon ion-person-stalker" style="font-size: x-large"></i>
 
                         <h2>{{event.fill}}/{{event.cap}}</h2>
-                        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
                     </div>
                     <div class="col">
                         <i class="ion-chevron-right"></i>

@@ -57,6 +57,16 @@ function config($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('tabs.notifs', {
+            url: "/notifications",
+            views: {
+                'event-tab': {
+                    templateUrl: "client/notifications/notifs.html",
+                    controller: 'notifCtrl',
+                    controllerAs: 'Notification'
+                }
+            }
+        })
         .state('tabs.facts2', {
             url: "/facts2",
             views: {
