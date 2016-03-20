@@ -1,0 +1,13 @@
+{
+  "_id":"Mongo unique id",
+  "from": "User id who sent, default id if server",
+  "to": ["List of user ids to recieve"],
+  "readby":["List of users who read the notif"],
+  "time_created": 1253599140969,
+  "type":"Friend Request, Friend Request Accepted, User Left, User Joined, Event Ready, Event Cancelled, Other",
+  "content":
+  {
+    "link_id":"User id or event id for href path",
+    "message":"Any special messages that need to be sent"
+  }
+}

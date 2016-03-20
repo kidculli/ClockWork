@@ -37,7 +37,6 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "client/tab/tab.html"
         })
         .state('tabs.event-feed', {
-            //cache:false,
             url: "/event-feed",
             views: {
                 'event-tab': {
@@ -54,6 +53,16 @@ function config($stateProvider, $urlRouterProvider) {
                     templateUrl: "client/events/event-detail/event-detail.html",
                     controller: 'EventDetailCtrl',
                     controllerAs: 'EventDetail'
+                }
+            }
+        })
+        .state('tabs.notifs', {
+            url: "/notifications",
+            views: {
+                'event-tab': {
+                    templateUrl: "client/notifications/notifs.html",
+                    controller: 'notifCtrl',
+                    controllerAs: 'Notification'
                 }
             }
         })

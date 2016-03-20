@@ -31,27 +31,52 @@ Meteor.methods({
         if (collection_name == "Events") {
             // update returns number of records updated
             var result = Events.update(query_params.query, query_params.update, query_params.options);
-            console.log(typeof result);
             if (result == 0) {
-                console.log("" + query_params.query._id + ": updated 0 records");
+                console.log("" + query_params.query._id + ": updated 0 records in Events collection");
                 return false;
             }
             else if (result == 1) {
-                console.log("Successfully performed update with query ");
+                console.log("Successfully performed update on Events collection with query ");
                 return true;
             }
             else {
-                console.log("Error occurred while updating");
+                console.log("Error occurred while updating Events");
                 return false;
             }
         }
         else if (collection_name == "Notifications") {
-            // not yet implemented
-            return {success: false, reason: "!exist"};
+            var result = Notifications.update(query_params.query, query_params.update, query_params.options);
+            if (result == 0) {
+                console.log("" + query_params.query._id + ": updated 0 records in Notifications collection");
+                return false;
+            }
+            else if (result == 1) {
+                console.log("Successfully performed update on Notification collection with query ");
+                return true;
+            }
+            else {
+                console.log("Error occurred while updating Notifications");
+                return false;
+            }
         }
         else {
             console.log(collection_name + "collection not found");
             return {success: false, reason: "!exist"};
+        }
+    },
+    "Notify": function (notif_obj) {
+        /*
+            Inserts a notification object into Notifications collection
+            Args
+                -notif obj
+         */
+        if (Notifications.insert(notif_obj)) {
+            console.log("successfully sent notification to recipients " + notif_obj.to);
+            return true;
+        }
+        else {
+            console.log("Failed to notify recipients " + notif_obj.to);
+            return false;
         }
     },
 
@@ -103,6 +128,18 @@ Meteor.methods({
             }
 
             console.log("Successfully updated event: " + event.title + " id: " +event._id);
+            //create notif object
+            Meteor.call("Notify",{
+                from:username,
+                to: event.attendees.concat([event.owner]),
+                readby:[],
+                time_created: new Date().getTime(),
+                type:"User Joined",
+                content: {
+                    link_id:event._id,
+                    message:username + " joined event: " + event.title
+                }
+            });
             return {success:true,reason:"none"};
         }
         else {
@@ -116,7 +153,8 @@ Meteor.methods({
                query: {_id: event._id},
                 update: {
                     $pull: {attendees:username},
-                    $inc: {fill:-1}
+                    $inc: {fill:-1},
+                    $set: {full:false}
                 },
                 options: {
                     upsert:false
@@ -125,6 +163,21 @@ Meteor.methods({
         }
         if(result) {
             console.log(username + " is no longer attending event: " + event._id);
+            //send notification to people still attending and owner
+            //splice the person who left
+            event.attendees.splice(event.attendees.indexOf(username),1);
+            //create notif object
+            Meteor.call("Notify",{
+                from:username,
+                to: event.attendees.concat([event.owner]),
+                readby:[],
+                time_created: new Date().getTime(),
+                type:"User Left",
+                content: {
+                    link_id:event._id,
+                    message:username + " left event: " + event.title
+                }
+            });
         }
         else{
             console.log("No changes made " +username + " was not attending event: "+ event._id);
