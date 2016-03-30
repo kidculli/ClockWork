@@ -19,12 +19,12 @@ $side-menu-tab-color: #2E3C54;
 $text: white;
 
 $main-content-text-color: black;
-$list-height: 150px;
+
 ion-side-menu-content{
 
   ion-nav-bar{
     ion-header-bar.bar.bar-dark{
-      border-color: #f44336;
+      border-color: #dddddd;
     }
   }
 
@@ -35,17 +35,43 @@ ion-side-menu-content{
       ion-content{
         // This is the background color for each event in the list
         ion-list{
-          ion-item.item-complex .item-content{
-            height: $list-height;
+          ion-item.item.item-complex.item-right-editable {
+            height: 150px;
+            a.item-content{
+              padding: 0%;
+              height:100%;
+              div.row{
+                padding:0px;
+                height:100%;
+                div.col.col-33{
+                  text-align: center;
+                  background-color: #5D9EA1;
+                  color:white;
+                }
+                div.col.item-text-wrap{
+                  h2{ font-weight: bolder;
+                      padding-left: 3px;
+                      font-size: 30px;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      width: 125px;
+                  }
+                  h3{ padding-left: 3px}
+
+                  div.row{
+                    div.col{
+                      countdown-timer h3{margin-left: 5px; margin-top:3px;}
+                    }
+                  }
+                }
+              }
+            }
           }
         }
-
       }
     }
   }
-
 }
-
 
 //Side Navigation
 ion-side-menu{
