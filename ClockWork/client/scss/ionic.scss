@@ -9,74 +9,101 @@ $assertive:                       #ef4e3a !default;
 $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
-$test-image: "images/134.png";
-$blue: #054357;
-$dark: #cd2027;
+$test-image: "134.png";
+$blue: #EEEEEE;
+$dark: #F44336;
 $orange: #fc5a22;
 
-ion-nav-view.view-container .pane{
+$side-menu-background-color: #1B2432;
+$side-menu-tab-color: #2E3C54;
+$text: white;
 
-  background-color: $blue;
-  color: white;
+$main-content-text-color: black;
 
-  h3{
-    color: white;
-  }
+ion-side-menu-content{
 
-  // This is for search bar
-  ion-list {
-    .list .item {
-      background-color: $blue;
-
-      .icon{
-        color: white;
-      }
-
-      input{
-        color:white;
-      }
-
-      input::-webkit-input-placeholder {
-        color: white;
-      }
-    }
-    .list .item:hover{
-      background-color: $orange;
+  ion-nav-bar{
+    ion-header-bar.bar.bar-dark{
+      border-color: #dddddd;
     }
   }
 
-  // This is for event-feed list item
-  ion-list{
-    ion-item.item-complex .item-content{
-      background-color: $blue;
-      color: white;
+  ion-nav-view{
+    ion-view.pane{
+      background-color: #dddddd;
 
-      h2.ng-binding{
-        color:white;
-      }
+      ion-content{
+        // This is the background color for each event in the list
+        ion-list{
+          ion-item.item.item-complex.item-right-editable {
+            height: 150px;
+            a.item-content{
+              padding: 0%;
+              height:100%;
+              div.row{
+                padding:0px;
+                height:100%;
+                div.col.col-33{
+                  text-align: center;
+                  background-color: #5D9EA1;
+                  color:white;
+                }
+                div.col.item-text-wrap{
+                  h2{ font-weight: bolder;
+                      padding-left: 3px;
+                      font-size: 30px;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      width: 125px;
+                  }
+                  h3{ padding-left: 3px}
 
-      h3.ng-binding{
-        color:white;
+                  div.row{
+                    div.col{
+                      countdown-timer h3{margin-left: 5px; margin-top:3px;}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
-    ion-item.item-complex .item-content:hover{
-      background-color: $orange;
-    }
-
   }
 }
 
 //Side Navigation
 ion-side-menu{
+
+  ion-header-bar.bar{
+    background-color: $side-menu-tab-color;
+    border-color:$side-menu-background-color;
+    border-bottom-width: 0px;
+    h1{
+      color: $text;
+    }
+  }
+
   ion-content{
-    background-color: $blue;
+    background-color: $side-menu-background-color;
 
     .list .item{
-      background-color: $blue;
+      background-color: $side-menu-tab-color;
+      border-color:$side-menu-background-color;
+      color: $text;
     }
 
+    //.list .item:hover{
+    //  background-color: #FF5964;
+    //  //color: #F44336;
+    //  //border-left: thick solid #F44336;
+    //}
+    .list .item:active{
+      background-color: #FF5964;
+    }
     .list .item:hover{
-      background-color: $orange;
+      background-color: #FF5964;
     }
   }
 }
@@ -89,31 +116,30 @@ ion-modal-view{
     form {
       label.item-input {
         background-color: $blue;
-        background-color: $blue;
 
         //Make all the text in the modal with <div/> tag into white color;
         div{
-          color:white;
+          color:$main-content-text-color;
         }
 
         input{
-          color:white;
+          color:$main-content-text-color;
         }
         input::-webkit-input-placeholder {
-          color: white;
+          color: $main-content-text-color;
         }
 
         textarea{
           background-color: $blue;
-          color:white;
+          color:$main-content-text-color;
         }
         textarea::-webkit-input-placeholder {
-          color: white;
+          color: $main-content-text-color;
         }
 
         select{
           background-color: $blue;
-          color:white;
+          color:$main-content-text-color;
         }
       }
       label.item-input:hover{
@@ -136,56 +162,56 @@ ion-modal-view{
 
 @charset "UTF-8";
 
-  @import
-    // Ionicons
-  "ionicons/ionicons.scss",
+@import
+  // Ionicons
+"ionicons/ionicons.scss",
 
-    // Variables
-  "mixins",
-  "variables",
+  // Variables
+"mixins",
+"variables",
 
-    // Base
-  "reset",
-  "scaffolding",
-  "type",
+  // Base
+"reset",
+"scaffolding",
+"type",
 
-    // Components
-  "action-sheet",
-  "backdrop",
-  "bar",
-  "tabs",
-  "menu",
-  "modal",
-  "popover",
-  "popup",
-  "loading",
-  "items",
-  "list",
-  "badge",
-  "slide-box",
-  "slides",
-  "refresher",
-  "spinner",
+  // Components
+"action-sheet",
+"backdrop",
+"bar",
+"tabs",
+"menu",
+"modal",
+"popover",
+"popup",
+"loading",
+"items",
+"list",
+"badge",
+"slide-box",
+"slides",
+"refresher",
+"spinner",
 
-    // Forms
-  "form",
-  "checkbox",
-  "toggle",
-  "radio",
-  "range",
-  "select",
-  "progress",
+  // Forms
+"form",
+"checkbox",
+"toggle",
+"radio",
+"range",
+"select",
+"progress",
 
-    // Buttons
-  "button",
-  "button-bar",
+  // Buttons
+"button",
+"button-bar",
 
-    // Util
-  "grid",
-  "util",
-  "platform",
+  // Util
+"grid",
+"util",
+"platform",
 
-    // Animations
-  "animations",
-  "transitions";
+  // Animations
+"animations",
+"transitions";
 
