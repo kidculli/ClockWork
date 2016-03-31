@@ -1,0 +1,32 @@
+<!--
+Author: Cullin Lam
+Created On: 3/30/16
+File: profile.html
+Implements user profile view
+/Users/Cullin/MeteorProjects/GUI-2-2016/ClockWork/public/img/coffee-doodle-wallpaper.jpg
+-->
+<ion-view title="Profile" style="background-color:#C0E5FA;">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <div style="text-align:left;">
+            <img src="https://scontent-lga3-1.xx.fbcdn.net/hphotos-xal1/v/t1.0-9/12249788_10208068950106709_3445933948293500211_n.jpg?oh=2818d0a1c33522ede07276d0703ade9a&oe=57819E3F" width="50%" height="auto">
+        </div>
+        <button id="home-button1" style="font-weight:300;color:#023A18;border-radius:11px 11px 11px 11px;" class="button button-energized  icon-left ion-plus">Add Friend</button>
+        <div class="list card">
+            <div class="item item-divider">About Me</div>
+            <div class="item item-body">
+                <div id="home-markdown1" style="color:#000000;">
+                    <p>{{profile.bio}}</p>
+                    <!--<p>My Name is Cullin I like to chill eat food play video games hit me up bois</p>-->
+                </div>
+            </div>
+        </div>
+        <ion-list>
+            <ion-item class="item-divider">Attending</ion-item>
+            <ion-item>Item</ion-item>
+            <ion-item class="item-divider">Attended Events</ion-item>
+            <ion-item>Item 1</ion-item>
+            <ion-item>Item 2</ion-item>
+            <ion-item>Item 3</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

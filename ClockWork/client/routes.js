@@ -66,6 +66,16 @@ function config($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('tabs.profile', {
+            url: '/profile/:userId',
+            views: {
+                'event-tab': {
+                    templateUrl: 'client/profiles/profile.html',
+                    controller: 'profileCtrl',
+                    controllerAs: 'profile'
+                }
+            }
+        })
         .state('tabs.facts2', {
             url: "/facts2",
             views: {
