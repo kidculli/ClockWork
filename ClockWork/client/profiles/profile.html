@@ -20,13 +20,55 @@ Implements user profile view
                 </div>
             </div>
         </div>
-        <ion-list>
+        <div class="list card" ng-hide="profile.hide_attending">
             <ion-item class="item-divider">Attending</ion-item>
-            <ion-item>Item</ion-item>
-            <ion-item class="item-divider">Attended Events</ion-item>
-            <ion-item>Item 1</ion-item>
-            <ion-item>Item 2</ion-item>
-            <ion-item>Item 3</ion-item>
+            <ion-item href="#/tab/event-detail/{{profile.attending._id}}">
+                <div class="row">
+                    <div class="col col-33">
+                        <br><br><i class="icon icon-left {{profile.attending.event_type | icon}}" style="font-size: -webkit-xxx-large;"></i>
+                    </div>
+                    <div class="col item-text-wrap">
+
+                        <h2>{{profile.attending.title}}</h2>
+                        <h3>{{profile.attending.owner}}</h3>
+                    </div>
+
+                    <div class="col col-33">
+
+                        <i class="icon ion-android-alarm-clock" style="font-size: x-large"></i>
+                        <countdown-timer></countdown-timer>
+                    </div>
+
+
+                    <div class="col col-20">
+                        <i class="icon ion-person-stalker" style="font-size: x-large"></i>
+
+                        <h2>{{profile.attending.fill}}/{{profile.attending.cap}}</h2>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+        <ion-list>
+            <ion-item class="item-divider">Recently Attended Events</ion-item>
+            <ion-item ng-repeat="event in profile.attended | orderBy: '-time_expire' | limitTo: 3">
+                <div class="row">
+                    <div class="col col-33">
+                        <br><br><i class="icon icon-left {{event.event_type | icon}}" style="font-size: -webkit-xxx-large;"></i>
+                    </div>
+                    <div class="col item-text-wrap">
+
+                        <h2>{{event.title}}</h2>
+                        <h3>{{event.owner}}</h3>
+                        <h3>{{event.time_expire | date:"short"}}</h3>
+
+                    </div>
+                    <div class="col">
+                        <i class="icon ion-person-stalker"></i>
+                        <h2>{{event.fill}}/{{event.cap}}</h2>
+                    </div>
+                </div>
+            </ion-item>
+
         </ion-list>
     </ion-content>
 </ion-view>
