@@ -1,35 +1,15 @@
 <!--Author: C Lam -->
 <!--CreatedOn: 3/19/16 -->
 <!--File: notifs.html -->
+<!--Added on swipe delete for notifications -->
 
 <!--This file implements notifications list view -->
 
 <ion-view view-title="Notifications">
 
     <ion-content>
-
-        <!--<ion-list>-->
-            <!--<ion-item>-->
-                <!--<div class="row">-->
-                    <!--<div class="col col-10">-->
-                        <!--<i class="icon icon-left ion-alert" style="font-size: xx-large"></i>-->
-                    <!--</div>-->
-
-                    <!--<div class="col col-80 item-text-wrap">-->
-                        <!--Kidculli joined: Swag Boys 3000 Balling in mu mazerati boys kalvsafvhalf klhflwakfbhlawfhklaflkafhlakfhnhklafhelahfiagbeagbaebh ;lwe;wlfwalfhwklgb-->
-                    <!--</div>-->
-                    <!--<div class="col col-10">-->
-                        <!--8:04 AM-->
-                    <!--</div>-->
-
-                    <!--<ion-option-button class="button-assertive" ng-click="EventFeed.removeEvent(event)">-->
-                        <!--Delete-->
-                    <!--</ion-option-button>-->
-                <!--</div>-->
-            <!--</ion-item>-->
-        <!--</ion-list>-->
         <ion-list ng-repeat="notif in Notification.notifs | orderBy:'-time_created'">
-            <ion-item href="#/tab/event-detail/{{notif.content.link_id}}">
+            <ion-item on-swipe-left="Notification.trash(notif._id)"  on-swipe-right="Notification.trash(notif._id)" href="#/tab/event-detail/{{notif.content.link_id}}">
                 <div class="row">
                     <div class="col col-10">
                         <i class="icon icon-left ion-alert" style="font-size: xx-large"></i>
@@ -41,9 +21,9 @@
                    <div class="col col-10">
                        {{notif.time_created | date:"h:mm a"}}
                    </div>
-                    <ion-option-button class="button-assertive" ng-click="Notification.trash(notif._id)">
-                        Delete
-                    </ion-option-button>
+                    <!--<ion-option-button class="button-assertive" ng-click="Notification.trash(notif._id)">-->
+                        <!--Delete-->
+                    <!--</ion-option-button>-->
                 </div>
             </ion-item>
         </ion-list>
