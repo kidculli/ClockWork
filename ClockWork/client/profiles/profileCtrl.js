@@ -25,22 +25,22 @@ angular.module("ClockWork").controller('profileCtrl',function($scope,$reactive,$
 
             attended:function(){
                 return Events.find({attendees:user_id,expired:true})
-            },
-            hide_attending:function(){
-                var obj = Events.findOne({attendees:user_id, expired:false});
-                if (obj.length == 0) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-                //if (len > 0 ){
-                //    return false;
-                //}
-                //else {
-                //    return true;
-                //}
             }
+            //hide_attending:function(){
+            //    var obj = Events.findOne({attendees:user_id, expired:false});
+            //    if (obj.length == 0) {
+            //        return true;
+            //    }
+            //    else {
+            //        return false;
+            //    }
+            //    //if (len > 0 ){
+            //    //    return false;
+            //    //}
+            //    //else {
+            //    //    return true;
+            //    //}
+            //}
         });
     // test
     this.bio = "I like to Dance and Code and stuff. On this to chill."
