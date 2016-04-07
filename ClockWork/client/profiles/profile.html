@@ -10,7 +10,7 @@ Implements user profile view
         <div style="text-align:left;">
             <img src="https://scontent-lga3-1.xx.fbcdn.net/hphotos-xal1/v/t1.0-9/12249788_10208068950106709_3445933948293500211_n.jpg?oh=2818d0a1c33522ede07276d0703ade9a&oe=57819E3F" width="50%" height="auto">
         </div>
-        <button id="home-button1" style="font-weight:300;color:#023A18;border-radius:11px 11px 11px 11px;" class="button button-energized  icon-left ion-plus">Add Friend</button>
+        <!--<button id="home-button1" style="font-weight:300;color:#023A18;border-radius:11px 11px 11px 11px;" class="button button-energized  icon-left ion-plus">Add Friend</button>-->
         <div class="list card">
             <div class="item item-divider">About Me</div>
             <div class="item item-body">
@@ -22,7 +22,10 @@ Implements user profile view
         </div>
         <div class="list card" ng-hide="profile.hide_attending">
             <ion-item class="item-divider">Attending</ion-item>
-            <ion-item href="#/tab/event-detail/{{profile.attending._id}}">
+            <ion-item ng-show="{{profile.attending === undefined}}">
+                You are not currently attending any events. Check out the feed to join or create one!
+            </ion-item>
+            <ion-item ng-hide="{{profile.attending === undefined}}" href="#/tab/event-detail/{{profile.attending._id}}">
                 <div class="row">
                     <div class="col col-33">
                         <br><br><i class="icon icon-left {{profile.attending.event_type | icon}}" style="font-size: -webkit-xxx-large;"></i>
