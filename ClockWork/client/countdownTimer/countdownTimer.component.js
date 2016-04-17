@@ -26,51 +26,24 @@ angular.module("ClockWork").directive("countdownTimer",function(){
             $reactive(this).attach($scope);
 
             //List of possible parent controller names for this directive *controllerAs name
-            const ctrl_list = ['profile','event','EventDetail'];
+            const ctrl_list = ['event','EventDetail'];
             // Iterate through array and get the time_expire value from parent ctrl
-            try {
-                console.log($scope.$parent.profile.attending.time_expire);
-                var event_expire = Math.floor(($scope.$parent.profile.attending.time_expire - new Date().getTime())/1000);
+            for (var i = 0; i< ctrl_list.length ; i++) {
+                if ($scope.$parent.hasOwnProperty(ctrl_list[i])){
+                    if(ctrl_list[i] == 'event') {
+                        // get difference between current time and event time in seconds
+                        var event_expire = Math.floor(($scope.$parent.event.time_expire - new Date().getTime())/1000);
+                        break;
+                    }
+                    else if(ctrl_list[i] == 'EventDetail') {
+                        var event_expire = Math.floor(($scope.$parent.EventDetail.event.time_expire - new Date().getTime())/1000);
+                        break;
+                    }
+                    else {
+                        console.log("Parent ctrl not found");
+                    }
+                }
             }
-            catch(e){
-                console.log(e);
-            }
-            console.log($scope.$parent.hasOwnProperty('profile'));
-            if ($scope.$parent.hasOwnProperty('event')) {
-                var event_expire = Math.floor(($scope.$parent.event.time_expire - new Date().getTime())/1000);
-            }
-            if ($scope.$parent.hasOwnProperty('EventDetail')) {
-                var event_expire = Math.floor(($scope.$parent.EventDetail.event.time_expire - new Date().getTime())/1000);
-            }
-            //if($scope.$parent.hasOwnProperty('profile')){
-            //    console.log("In profile ctrl");
-            //    var event_expire = Math.floor(($scope.$parent.profile.attending.time_expire - new Date().getTime())/1000);
-            //}
-
-            //for (var i = 0; i< ctrl_list.length ; i++) {
-            //    if ($scope.$parent.hasOwnProperty(ctrl_list[i])){
-            //        console.log(ctrl_list[i]);
-            //        if(ctrl_list[i] == 'event') {
-            //            // get difference between current time and event time in seconds
-            //            var event_expire = Math.floor(($scope.$parent.event.time_expire - new Date().getTime())/1000);
-            //            break;
-            //        }
-            //        else if(ctrl_list[i] == 'EventDetail') {
-            //            var event_expire = Math.floor(($scope.$parent.EventDetail.event.time_expire - new Date().getTime())/1000);
-            //            break;
-            //        }
-            //        else if(ctrl_list[i] == 'profile') {
-            //            var event_expire = Math.floor(($scope.$parent.profile.attending.time_expire - new Date().getTime())/1000);
-            //            break;
-            //        }
-            //        else {
-            //            console.log("Parent ctrl not found");
-            //        }
-            //    }
-            //}
-            //if (typeof event_expire == 'undefined') {
-            //    console.log($scope.$parent.profile.attending.time_expire);
-            //}
             // create new reactive Countdown //uses flyandi:reactive-countdown meteor package
             var countdown = new ReactiveCountdown(event_expire,{steps:1});
             //start the timer

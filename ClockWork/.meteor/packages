@@ -11,6 +11,7 @@ session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 
+standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 
 autopublish             # Publish all data to the clients (for prototyping)
@@ -20,10 +21,10 @@ driftyco:ionic
 angularui:angular-ui-router
 pagebakers:ionicons
 shynah:ionic-timepicker
+mquandalle:bower
 flyandi:reactive-countdown
 accounts-password
+dotansimha:accounts-ui-angular
 fourseven:scss
 meteoric:ionic-sass
 angular:angular-messages
-standard-minifier-css
-standard-minifier-js

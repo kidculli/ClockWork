@@ -36,18 +36,63 @@ ion-side-menu-content{
         // This is the background color for each event in the list
         ion-list{
           ion-item.item.item-complex.item-right-editable {
-            height: 150px;
+            //height: 150px;
             a.item-content{
               padding: 0%;
               height:100%;
               div.row{
                 padding:0px;
                 height:100%;
+
                 div.col.col-33{
                   text-align: center;
-                  background-color: #5D9EA1;
+                  background-color: #F5AB35;
                   color:white;
+                  padding-bottom: 40px;
                 }
+
+                div.col.col-33.Dining{
+                  @extend div.col.col-33;
+                  background-color: #E08283;
+                }
+                div.col.col-33.Coffee{
+                  @extend div.col.col-33;
+                  background-color: #6C7A89;
+                }
+                div.col.col-33.Music{
+                  @extend div.col.col-33;
+                  background-color: #22313F;
+                }
+                div.col.col-33.Personal.Care{
+                  @extend div.col.col-33;
+                  background-color: #D64541;
+                }
+                div.col.col-33.Outdoors{
+                  @extend div.col.col-33;
+                  background-color: #26A65B;
+                }
+                div.col.col-33.Movie{
+                  @extend div.col.col-33;
+                  background-color: #674172;
+                }
+                div.col.col-33.Game{
+                  @extend div.col.col-33;
+                  background-color: #EF4836;
+                }
+                div.col.col-33.Sport{
+                  @extend div.col.col-33;
+                  background-color: #019875;
+                }
+                div.col.col-33.Shopping{
+                  @extend div.col.col-33;
+                  background-color: #913D88;
+                }
+                div.col.col-33.Other{
+                  @extend div.col.col-33;
+                  background-color: #F2784b;
+                }
+
+
                 div.col.item-text-wrap{
                   h2{ font-weight: bolder;
                       padding-left: 3px;
@@ -115,7 +160,7 @@ ion-modal-view{
     background-color: $blue;
     form {
       label.item-input {
-        background-color: $blue;
+        background-color: white;
 
         //Make all the text in the modal with <div/> tag into white color;
         div{
@@ -130,7 +175,7 @@ ion-modal-view{
         }
 
         textarea{
-          background-color: $blue;
+          background-color: white;
           color:$main-content-text-color;
         }
         textarea::-webkit-input-placeholder {
@@ -138,17 +183,17 @@ ion-modal-view{
         }
 
         select{
-          background-color: $blue;
+          background-color: white;
           color:$main-content-text-color;
         }
       }
       label.item-input:hover{
-        background-color:$orange;
+        //background-color:$orange;
         textarea:hover{
-          background-color:$orange;
+          //background-color:$orange;
         }
         select:hover{
-          background-color:$orange;
+          //background-color:$orange;
         }
       }
     }
