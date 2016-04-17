@@ -20,8 +20,6 @@
  *
  *   -3/14/16 C Lam
  *      -Added Meteor User username to event create record
- *   -4/2/2016
- *      - Initialized attendees with owner
  */
 angular
     .module('ClockWork').controller('addEventCtrl', function($scope, $reactive) {
@@ -116,7 +114,7 @@ angular
             this.newEvent['fill'] = 1;
             this.newEvent['owner'] = Meteor.user().username;
             // add empty array for attendees
-            this.newEvent['attendees'] = [Meteor.user().username];
+            this.newEvent['attendees'] = [];
             // add empty object for loc
             this.newEvent['loc'] = {};
             // add expired field
