@@ -37,7 +37,7 @@
         <ion-list ng-repeat="event in EventFeed.events">
             <ion-item href="#/tab/event-detail/{{event._id}}">
                 <div class="row">
-                    <div class="col col-33">
+                    <div class="col col-33 {{event.event_type}}">
                         <br><br><i class="icon icon-left {{event.event_type | icon}}" style="font-size: -webkit-xxx-large;"></i>
                     </div>
                     <div class="col item-text-wrap">
