@@ -94,18 +94,39 @@ ion-side-menu-content{
 
 
                 div.col.item-text-wrap{
+
                   h2{ font-weight: bolder;
-                      padding-left: 3px;
+                      padding-left: 5px;
                       font-size: 30px;
                       white-space: nowrap;
                       overflow: hidden;
                       width: 125px;
                   }
-                  h3{ padding-left: 3px}
 
+                  h3 {
+                    padding-left: 5px;
+                  }
                   div.row{
-                    div.col{
-                      countdown-timer h3{margin-left: 5px; margin-top:3px;}
+
+                    div{
+                      i.icon.ion-person-stalker{
+                        padding-left: 5px;
+                      }
+                    }
+
+                    div{
+                      h3.ng-binding{
+                        padding-top: 2px;
+                      }
+                    }
+
+                    div{
+                      i.icon.ion-android-alarm-clock{
+                        padding-left: 5px;
+                      }
+                    }
+                    div{
+                      countdown-timer h3{padding-left: 5px; margin-top:1px;}
                     }
                   }
                 }
