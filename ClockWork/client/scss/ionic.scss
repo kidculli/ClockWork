@@ -9,10 +9,8 @@ $assertive:                       #ef4e3a !default;
 $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
-$test-image: "134.png";
-$blue: #EEEEEE;
+
 $dark: #F44336;
-$orange: #fc5a22;
 
 $side-menu-background-color: #1B2432;
 $side-menu-tab-color: #2E3C54;
@@ -94,7 +92,7 @@ ion-side-menu-content{
 
 
                 div.col.item-text-wrap{
-
+                  //Tittle
                   h2{ font-weight: bolder;
                       padding-left: 5px;
                       font-size: 30px;
@@ -103,34 +101,25 @@ ion-side-menu-content{
                       width: 125px;
                   }
 
-                  h3 {
-                    padding-left: 5px;
-                  }
                   div.row{
-
                     div{
                       i.icon.ion-person-stalker{
                         padding-left: 5px;
                       }
-                    }
 
-                    div{
                       h3.ng-binding{
                         padding-top: 2px;
                       }
-                    }
 
-                    div{
                       i.icon.ion-android-alarm-clock{
                         padding-left: 5px;
                       }
-                    }
-                    div{
                       countdown-timer h3{padding-left: 5px; margin-top:1px;}
                     }
                   }
                 }
 
+                //Circle Border for profile picture
                 div.col{
                   div{
                     text-align: center;
@@ -178,8 +167,6 @@ ion-side-menu-content{
 
                   }
                 }
-
-
               }
             }
           }
@@ -210,11 +197,6 @@ ion-side-menu{
       color: $text;
     }
 
-    //.list .item:hover{
-    //  background-color: #FF5964;
-    //  //color: #F44336;
-    //  //border-left: thick solid #F44336;
-    //}
     .list .item:active{
       background-color: #FF5964;
     }
@@ -228,7 +210,7 @@ ion-side-menu{
 // Double check on this for the drop down.
 ion-modal-view{
   ion-content{
-    background-color: $blue;
+    background-color: #EEEEEE;
     form {
       label.item-input {
         background-color: white;
