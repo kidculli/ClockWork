@@ -109,6 +109,56 @@ ion-side-menu-content{
                     }
                   }
                 }
+
+                div.col{
+                  div{
+                    text-align: center;
+                    div.user{
+                      display: inline-block;
+                      width: 100px;
+                      height: 100px;
+                      border-radius: 50%;
+                      background-repeat: no-repeat;
+                      background-position: center center;
+                      background-size: cover;
+                      border:5px solid #F5AB35;
+                    }
+
+                    div.user.Dining{
+                      border:5px solid #E08283;
+                    }
+                    div.user.Coffee{
+                      border:5px solid #6C7A89;
+                    }
+                    div.user.Music{
+                      border:5px solid #22313F;
+                    }
+                    div.user.Personal.Care{
+                      border:5px solid #D64541;
+                    }
+                    div.user.Outdoors{
+                      border:5px solid #26A65B;
+                    }
+                    div.user.Movie{
+                      border:5px solid #674172;
+                    }
+                    div.user.Game{
+                      border:5px solid #EF4836;
+                    }
+                    div.user.Sport{
+                      border:5px solid #019875;
+                    }
+                    div.user.Shopping{
+                      border:5px solid #913D88;
+                    }
+                    div.user.Other{
+                      border:5px solid #F2784b;
+                    }
+
+                  }
+                }
+
+
               }
             }
           }

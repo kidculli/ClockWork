@@ -43,18 +43,25 @@
                     <div class="col item-text-wrap">
 
                         <h2>{{event.title}}</h2>
-                        <h3>{{event.owner}}</h3>
 
-                        <div class="row" >
+                        <i class="icon ion-person-stalker"></i>
+                        <h3>{{event.fill}}/{{event.cap}}</h3>
+                        <div class="row">
                             <div class="col col-10"><i class="icon ion-android-alarm-clock"></i></div>
                             <div class="col"><countdown-timer></countdown-timer></div>
                         </div>
+                    </div>
+
+                    <div class="col">
+                        <div>
+                            <div class="user {{event.event_type}}" style="background-image: url('http://1pun.ch/img/goofysmile.png');">
+
+                            </div>
+                            <h3 style="text-align: center;">{{event.owner}}</h3>
+                        </div>
 
                     </div>
-                    <div class="col">
-                        <i class="icon ion-person-stalker"></i>
-                        <h2>{{event.fill}}/{{event.cap}}</h2>
-                    </div>
+
                     <ion-option-button class="button-assertive" ng-click="EventFeed.removeEvent(event)">
                         Delete
                     </ion-option-button>
