@@ -55,7 +55,7 @@ ion-side-menu-content{
                 }
                 div.col.col-33.Coffee{
                   @extend div.col.col-33;
-                  background-color: #6C7A89;
+                  background-color: #795548;
                 }
                 div.col.col-33.Music{
                   @extend div.col.col-33;
@@ -90,7 +90,7 @@ ion-side-menu-content{
                   background-color: #F2784b;
                 }
 
-
+                // Text content description
                 div.col.item-text-wrap{
                   //Tittle
                   h2{ font-weight: bolder;
@@ -105,16 +105,26 @@ ion-side-menu-content{
                     div{
                       i.icon.ion-person-stalker{
                         padding-left: 5px;
+                        color: darkgrey;
                       }
 
                       h3.ng-binding{
+                        color: darkgrey;
+                        padding-left: 9px;
                         padding-top: 2px;
                       }
 
                       i.icon.ion-android-alarm-clock{
+                        color: darkgrey;
                         padding-left: 5px;
                       }
-                      countdown-timer h3{padding-left: 5px; margin-top:1px;}
+                      countdown-timer h3{
+                        padding-left: 5px;
+                        margin-top:1px;
+                        .ng-binding{
+                          color: darkgrey;
+                        }
+                      }
                     }
                   }
                 }
@@ -138,7 +148,7 @@ ion-side-menu-content{
                       border:5px solid #E08283;
                     }
                     div.user.Coffee{
-                      border:5px solid #6C7A89;
+                      border:5px solid #795548;
                     }
                     div.user.Music{
                       border:5px solid #22313F;

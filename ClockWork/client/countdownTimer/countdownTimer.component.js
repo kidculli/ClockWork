@@ -20,7 +20,8 @@
 angular.module("ClockWork").directive("countdownTimer",function(){
     return {
         restrict:"E",
-        template: '<h3 style="color: #111111">{{countdownTimer.time_count| secondsToDateTime | date:"HH:mm:ss"}}</h3>',
+        //template: '<h3 style="color: #111111">{{countdownTimer.time_count| secondsToDateTime | date:"HH:mm:ss"}}</h3>',
+        template: '<h3>{{countdownTimer.time_count| secondsToDateTime | date:"HH:mm:ss"}}</h3>',
         controllerAs:"countdownTimer",
         controller: function($scope, $element ,$reactive){
             $reactive(this).attach($scope);
