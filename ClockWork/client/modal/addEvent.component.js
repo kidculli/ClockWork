@@ -54,7 +54,7 @@ angular
         inputEpochTime: 0, //((new Date()).getHours() * 60 * 60),  //Optional
         step: 5,  //Optional
         format: 24,  //Optional
-        titleLabel: '24-hour Format',  //Optional
+        titleLabel: 'Set Event Feed Duration <br> hours : minutes',  //Optional
         setLabel: 'Set',  //Optional
         closeLabel: 'Close',  //Optional
         setButtonType: 'button-positive',  //Optional
@@ -114,7 +114,7 @@ angular
             this.newEvent['fill'] = 1;
             this.newEvent['owner'] = Meteor.user().username;
             // add empty array for attendees
-            this.newEvent['attendees'] = [];
+            this.newEvent['attendees'] = [Meteor.user().username];
             // add empty object for loc
             this.newEvent['loc'] = {};
             // add expired field
