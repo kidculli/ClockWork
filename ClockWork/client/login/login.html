@@ -28,14 +28,14 @@ This file implements login view of our application.
                            name="username"
                            ng-model="user.username"
                            ng-minlength="5"
-                           ng-maxlength="25"
+                           ng-maxlength="35"
                            required>
                 </label>
 
                 <div class="form-errors" ng-messages="signinForm.username.$error" ng-show="signinForm.username.$dirty">
                     <div class="form-error" ng-message="required">This field is required</div>
                     <div class="form-error" ng-message="minlength">This field must be greater than 5 characters</div>
-                    <div class="form-error" ng-message="maxlength">This field must be less than 25 characters</div>
+                    <div class="form-error" ng-message="maxlength">This field must be less than 35 characters</div>
                 </div>
 
                 <label class="item item-input"
