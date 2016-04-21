@@ -1,0 +1,77 @@
+<!--
+Author: Cullin Lam
+Created On: 3/30/16
+File: profile.html
+Implements user profile view
+/Users/Cullin/MeteorProjects/GUI-2-2016/ClockWork/public/img/coffee-doodle-wallpaper.jpg
+-->
+<ion-view title="Profile" style="background-color:#C0E5FA;">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <div style="text-align:left;">
+            <img src="https://scontent-lga3-1.xx.fbcdn.net/hphotos-xal1/v/t1.0-9/12249788_10208068950106709_3445933948293500211_n.jpg?oh=2818d0a1c33522ede07276d0703ade9a&oe=57819E3F" width="50%" height="auto">
+        </div>
+        <!--<button id="home-button1" style="font-weight:300;color:#023A18;border-radius:11px 11px 11px 11px;" class="button button-energized  icon-left ion-plus">Add Friend</button>-->
+        <div class="list card">
+            <div class="item item-divider">About Me</div>
+            <div class="item item-body">
+                <div id="home-markdown1" style="color:#000000;">
+                    <p>{{profile.bio}}</p>
+                    <!--<p>My Name is Cullin I like to chill eat food play video games hit me up bois</p>-->
+                </div>
+            </div>
+        </div>
+        <div class="list card" ng-hide="profile.hide_attending">
+            <ion-item class="item-divider">Attending</ion-item>
+            <ion-item ng-show="{{profile.attending === undefined}}">
+                You are not currently attending any events. Check out the feed to join or create one!
+            </ion-item>
+            <ion-item ng-hide="{{profile.attending === undefined}}" href="#/tab/event-detail/{{profile.attending._id}}">
+                <div class="row">
+                    <div class="col col-33">
+                        <br><br><i class="icon icon-left {{profile.attending.event_type | icon}}" style="font-size: -webkit-xxx-large;"></i>
+                    </div>
+                    <div class="col item-text-wrap">
+
+                        <h2>{{profile.attending.title}}</h2>
+                        <h3>{{profile.attending.owner}}</h3>
+                    </div>
+
+                    <div class="col col-33">
+
+                        <i class="icon ion-android-alarm-clock" style="font-size: x-large"></i>
+                        <countdown-timer></countdown-timer>
+                    </div>
+
+
+                    <div class="col col-20">
+                        <i class="icon ion-person-stalker" style="font-size: x-large"></i>
+
+                        <h2>{{profile.attending.fill}}/{{profile.attending.cap}}</h2>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+        <ion-list>
+            <ion-item class="item-divider">Recently Attended Events</ion-item>
+            <ion-item ng-repeat="event in profile.attended | orderBy: '-time_expire' | limitTo: 3">
+                <div class="row">
+                    <div class="col col-33">
+                        <br><br><i class="icon icon-left {{event.event_type | icon}}" style="font-size: -webkit-xxx-large;"></i>
+                    </div>
+                    <div class="col item-text-wrap">
+
+                        <h2>{{event.title}}</h2>
+                        <h3>{{event.owner}}</h3>
+                        <h3>{{event.time_expire | date:"short"}}</h3>
+
+                    </div>
+                    <div class="col">
+                        <i class="icon ion-person-stalker"></i>
+                        <h2>{{event.fill}}/{{event.cap}}</h2>
+                    </div>
+                </div>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-view>
