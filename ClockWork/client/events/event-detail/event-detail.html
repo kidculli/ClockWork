@@ -55,10 +55,10 @@
         <button ng-click="EventDetail.leave()" class="button button-medium button-royal" ng-hide="EventDetail.hide_leave">
             Leave
         </button>
-        <ion-list>
+        <ion-list ng-controller="gotoProfileCtrl">
             <ion-item class="item-divider">Attending</ion-item>
-            <ion-item ng-controller="gotoProfileCtrl" ng-repeat="user in EventDetail.event.attendees">
-                <div ng-click="goToProfile({{user}})">{{user}}</div>
+            <ion-item ng-repeat="user in EventDetail.event.attendees">
+                <div ng-click="goToProfile(user)">{{user}}</div>
             </ion-item>
         </ion-list>
         <div>
