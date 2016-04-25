@@ -20,8 +20,11 @@ angular.module("ClockWork").filter('icon', [function() {
             "Sport":"ion-ios-football",
             "Shopping":"ion-bag",
             "Drinking/Partying":"ion-beer",
-            "Other":"ion-star"
-        }
+            "Other":"ion-star",
+            "User Joined":"ion-ios-plus",
+            "User Left":"ion-ios-minus",
+            "Event Ready":"ion-android-done-all"
+        };
         return icon_map[type];
     };
 }]);

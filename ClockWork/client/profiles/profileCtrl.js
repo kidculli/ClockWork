@@ -42,6 +42,12 @@ angular.module("ClockWork").controller('profileCtrl',function($scope,$reactive,$
             //    //}
             //}
         });
-    // test
-    this.bio = "I like to Dance and Code and stuff. On this to chill."
+    this.bio = "I like to Dance and Code and stuff. On this to chill.";
+    this.update_bio = function(bio){
+        Meteor.call("Update","users",{
+            query:{username:user_id},
+            update:{$set:{"profile.bio" : bio}},
+            options:{}
+        });
+    };
 });
