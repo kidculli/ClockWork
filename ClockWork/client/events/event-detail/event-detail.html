@@ -77,7 +77,7 @@
         <button ng-click="EventDetail.leave()" class="button button-medium button-royal" ng-hide="EventDetail.hide_leave">
             Leave
         </button>
-        <ion-list>
+        <ion-list ng-controller="gotoProfileCtrl">
             <div class="item item-divider">
                 Remaining Spots
             </div>
@@ -85,8 +85,8 @@
                 <h2 ng-hide="EventDetail.hide">{{EventDetail.event.cap - EventDetail.event.fill}} spots remaining!</h2>
             </div>
             <ion-item class="item-divider">Attending</ion-item>
-            <ion-item ng-controller="gotoProfileCtrl" ng-repeat="user in EventDetail.event.attendees">
-                <div ng-click="goToProfile({{user}})">{{user}}</div>
+            <ion-item ng-repeat="user in EventDetail.event.attendees">
+                <div ng-click="goToProfile(user)">{{user}}</div>
             </ion-item>
         </ion-list>
     </ion-content>
