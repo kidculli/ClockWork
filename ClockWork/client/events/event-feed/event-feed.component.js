@@ -27,6 +27,10 @@ angular
             }
         });
 
+        this.get_pic = function(u_name){
+           Users.find({username:u_name});
+        };
+
         //This is a modal to add new event
         $ionicModal.fromTemplateUrl('client/modal/addEvent_modal.html', {
             scope: $scope

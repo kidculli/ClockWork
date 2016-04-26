@@ -2,27 +2,27 @@
   <library name="meteor-packages-auto-import-npm" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular.min.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/npm-bcrypt/0.7.8_2/npm/node_modules/bcrypt/bcrypt.js" />
         <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.bundle.min.js" />
         <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.min.js" />
         <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular.js" />
         <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/index.js" />
         <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.bundle.js" />
         <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular-csp.css" />
-        <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular.min.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/npm-bcrypt/0.7.8_2/npm/node_modules/bcrypt/bcrypt.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular.min.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/npm-bcrypt/0.7.8_2/npm/node_modules/bcrypt/bcrypt.js" />
       <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.bundle.min.js" />
       <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.min.js" />
       <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular.js" />
       <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/index.js" />
       <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.bundle.js" />
       <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular-csp.css" />
-      <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular-meteor/dist/angular-meteor.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/angular-meteor-data/0.3.0/npm/node_modules/angular/angular.min.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/npm-bcrypt/0.7.8_2/npm/node_modules/bcrypt/bcrypt.js" />
     </CLASSES>
     <SOURCES />
   </library>

@@ -47,7 +47,7 @@
                 Event Type
             </div>
             <div class="item item-text-wrap">
-                {{EventDetail.event.event_type}}
+                <i class="icon {{EventDetail.event.event_type | icon}}"> </i> {{EventDetail.event.event_type}}
             </div>
         </div>
         <div class="card">
@@ -71,23 +71,23 @@
                 <p>{{EventDetail.event.description}}</p>
             </div>
         </div>
+        <ion-list ng-controller="gotoProfileCtrl">
+            <!--<div class="item item-divider">-->
+                <!--Remaining Spots-->
+            <!--</div>-->
+            <!--<div class="item item-text-wrap">-->
+                <!--<h2 ng-hide="EventDetail.hide">{{EventDetail.event.cap - EventDetail.event.fill}} spots remaining!</h2>-->
+            <!--</div>-->
+            <ion-item class="item-divider">Attending: {{EventDetail.event.fill}} / {{EventDetail.event.cap}}</ion-item>
+            <ion-item ng-repeat="user in EventDetail.event.attendees">
+                <div ng-click="goToProfile(user)">{{user}}</div>
+            </ion-item>
+        </ion-list>
         <button ng-click="EventDetail.attend()" class="button button-medium button-royal" ng-hide="EventDetail.hide_attend">
             Attend
         </button>
         <button ng-click="EventDetail.leave()" class="button button-medium button-royal" ng-hide="EventDetail.hide_leave">
             Leave
         </button>
-        <ion-list ng-controller="gotoProfileCtrl">
-            <div class="item item-divider">
-                Remaining Spots
-            </div>
-            <div class="item item-text-wrap">
-                <h2 ng-hide="EventDetail.hide">{{EventDetail.event.cap - EventDetail.event.fill}} spots remaining!</h2>
-            </div>
-            <ion-item class="item-divider">Attending</ion-item>
-            <ion-item ng-repeat="user in EventDetail.event.attendees">
-                <div ng-click="goToProfile(user)">{{user}}</div>
-            </ion-item>
-        </ion-list>
     </ion-content>
 </ion-view>
