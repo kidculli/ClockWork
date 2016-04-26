@@ -16,7 +16,7 @@ angular.module('ClockWork').controller('signupCtrl',function($scope,$reactive,$s
             username:user.username,
             email:user.email,
             password:user.password,
-            profile:{firstname:user.firstname,lastname:user.lastname}
+            profile:{firstname:user.firstname,lastname:user.lastname,bio:"Not yet Implemented!",img:"https://s-media-cache-ak0.pinimg.com/236x/b3/7e/04/b37e045f783e25193050d7e0cb81f495.jpg"}
            },
            function(result){
                console.log(result);
