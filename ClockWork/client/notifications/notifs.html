@@ -12,7 +12,7 @@
             <ion-item on-swipe-left="Notification.trash(notif._id)"  on-swipe-right="Notification.trash(notif._id)" href="#/tab/event-detail/{{notif.content.link_id}}">
                 <div class="row">
                     <div class="col col-10">
-                        <i class="icon icon-left ion-alert" style="font-size: xx-large"></i>
+                        <i class="icon icon-left {{notif.type | icon}}" style="font-size: xx-large"></i>
                     </div>
                     <div class="col col-80 item-text-wrap">
                         {{notif.content.message}}

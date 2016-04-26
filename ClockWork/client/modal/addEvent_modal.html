@@ -13,6 +13,8 @@
         - Added ng-class from Cullin to make validation look prettier.
      3/14/16 C LAM
         - Added more options
+    4/21/16
+        -added location
 -->
 <ion-modal-view>
     <ion-header-bar class="bar bar-header bar-dark">
@@ -22,25 +24,35 @@
     <ion-content class="padding">
         <div class="list" ng-controller="addEventCtrl as addEvent">
             <form class="list" name="eventForm" novalidate>
-
-                <label class="item item-input text"
-                       ng-class="{'has-error': addEvent.checkName() || eventForm.$submitted || eventForm.eventName.$touched,
+                <label class="item item-input text" ng-class="{'has-error': addEvent.checkName() || eventForm.$submitted || eventForm.eventName.$touched,
                                   'valid-lr': eventForm.eventName.$valid}">
                     <input type="text" placeholder="Name of Event" name="eventName" ng-model="addEvent.newEvent.title" required>
                 </label>
                 <div style="color:red" ng-show="addEvent.checkName() || eventForm.$submitted || eventForm.eventName.$touched">
-                    <div ng-show="eventForm.eventName.$error.required">Event name require.</div>
+                    <div ng-show="eventForm.eventName.$error.required">Event name required.</div>
                 </div>
-
-                <label class="item item-input text"
-                       ng-class="{'has-error': addEvent.checkName() || eventForm.$submitted || eventForm.eventDetail.$touched,
+                <!--<label class="item item-input text">
+                     use ng-change="" to edit loc
+                    <div ng-controller="MainCtrl">
+                        <div ng-controller="placesAutocompleteCtrl">
+                    <input type="text" gm-places-autocomplete="autocompleteOptions" placeholder="Address" ng-model="autocompleteModel"/>
+                         </div>
+                    </div>
+                </label>-->
+                <label class="item item-input text" ng-class="{'has-error': addEvent.checkName() || eventForm.$submitted || eventForm.eventDetail.$touched,
+                                  'valid-lr': eventForm.eventLocation.$valid}">
+                    <input type="text" placeholder="Location" name="eventLocation" ng-model="addEvent.newEvent.loc" required>
+                </label>
+                <div style="color:red" ng-show="addEvent.checkLocation() || eventForm.$submitted || eventForm.eventLocation.$touched">
+                    <div ng-show="eventForm.eventLocation.$error.required">Event location required.</div>
+                </div>
+                <label class="item item-input text" ng-class="{'has-error': addEvent.checkName() || eventForm.$submitted || eventForm.eventDetail.$touched,
                                   'valid-lr': eventForm.eventDetail.$valid}">
                     <textarea type="text" placeholder="Description" name="eventDetail" ng-model="addEvent.newEvent.description" required></textarea>
                 </label>
                 <div style="color:red" ng-show="addEvent.checkDescription() || eventForm.$submitted || eventForm.eventDetail.$touched">
-                    <div ng-show="eventForm.eventDetail.$error.required">Event description require.</div>
+                    <div ng-show="eventForm.eventDetail.$error.required">Event description required.</div>
                 </div>
-
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Pick Event Type:
@@ -61,15 +73,14 @@
                     </select>
                 </label>
                 <div style="color:red" ng-show="addEvent.checkType() || eventForm.$submitted || eventForm.eventType.$touched">
-                    <div ng-show="eventForm.eventType.$error.required">Event type require.</div>
+                    <div ng-show="eventForm.eventType.$error.required">Event type required.</div>
                 </div>
-
                 <div class="list">
                     <label class="item item-input item-select">
                         <div class="input-label">
                             Capacity
                         </div>
-                        <select ng-model = "addEvent.newEvent.cap" name="eventCapacity" required>
+                        <select ng-model="addEvent.newEvent.cap" name="eventCapacity" required>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -84,22 +95,20 @@
                     </label>
                 </div>
                 <div style="color:red" ng-show="addEvent.checkCapacity() || eventForm.$submitted || eventForm.eventCapacity.$touched">
-                    <div ng-show="eventForm.eventCapacity.$error.required ">Event capacity require.</div>
+                    <div ng-show="eventForm.eventCapacity.$error.required ">Event capacity required.</div>
                 </div>
-
                 <ionic-timepicker input-obj="addEvent.timePickerObject" name="eventTime" required>
                     <button type="button" class="button button-dark button-block">
                         <standard-time-meridian etime='addEvent.timePickerObject.inputEpochTime'>Set Countdown Duration</standard-time-meridian>
                     </button>
                 </ionic-timepicker>
                 <span style="color:red" ng-show="addEvent.checkTime()">Please select time</span>
-
                 <button type="button" class="button button-dark button-block " ng-click="addEvent.addEvent(eventForm.$valid,
                                                                                                            eventForm, addEvent.newEvent.title,
                                                                                                            addEvent.newEvent.description,
                                                                                                            addEvent.newEvent.event_type,
+                                                                                                           addEvent.newEvent.loc,
                                                                                                            addEvent.newEvent.cap );">Confirm Event and Post</button>
-
             </form>
         </div>
     </ion-content>

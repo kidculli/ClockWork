@@ -59,6 +59,21 @@ Meteor.methods({
                 return false;
             }
         }
+        else if (collection_name == "users") {
+            var result = users.update(query_params.query, query_params.update, query_params.options);
+            if (result == 0) {
+                console.log("" + query_params.query._id + ": updated 0 records in users collection");
+                return false;
+            }
+            else if (result == 1) {
+                console.log("Successfully performed update on users collection with query ");
+                return true;
+            }
+            else {
+                console.log("Error occurred while updating users");
+                return false;
+            }
+        }
         else {
             console.log(collection_name + "collection not found");
             return {success: false, reason: "!exist"};

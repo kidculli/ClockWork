@@ -9,6 +9,7 @@
 angular.module('ClockWork').controller('gotoProfileCtrl',function($scope,$state,$location){
     $scope.username = Meteor.user().username;
     $scope.goToProfile = function(username){
+        console.log(username);
         $state.go('tabs.profile',{userId:username});
     }
 });
