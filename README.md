@@ -15,3 +15,12 @@ friends to view and join.
  - AngularJs 
  - Ionic 
  - Apache Cordova 
+
+## Screen Shots 
+
+![feed](https://raw.githubusercontent.com/kidculli/ClockWork/master/ScreenShots/Feed.png)   ![sidemenu](https://raw.githubusercontent.com/kidculli/ClockWork/master/ScreenShots/SideMenu.png)
+![profile](https://raw.githubusercontent.com/kidculli/ClockWork/master/ScreenShots/Profile.png)
+![addevent](https://raw.githubusercontent.com/kidculli/ClockWork/master/ScreenShots/AddEvent.png)
+![detail](https://raw.githubusercontent.com/kidculli/ClockWork/master/ScreenShots/EventDetail.png)
+![timer](https://raw.githubusercontent.com/kidculli/ClockWork/master/ScreenShots/Timer.png)
+![about](https://raw.githubusercontent.com/kidculli/ClockWork/master/ScreenShots/About.png)
